@@ -3,7 +3,11 @@ package com.example.androidlibrary;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.TimeZone;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.Date;
+import java.util.List;
 
 public class BasicFunctions {
     public static String getDuration(int duration)
@@ -32,5 +36,13 @@ public class BasicFunctions {
         final SimpleDateFormat formatter = new SimpleDateFormat("hh:mm aa");
         formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
         return formatter.format(date);
+    }
+
+    public void setAdapter(RecyclerView recyclerView, List<String> mNameList, RecyclerView.LayoutManager linearLayoutManager) {
+        if (recyclerView != null) {
+            recyclerView.setLayoutManager(linearLayoutManager);
+            CustomAdapter customAdapter = new CustomAdapter(mNameList);
+            recyclerView.setAdapter(customAdapter);
+        }
     }
 }

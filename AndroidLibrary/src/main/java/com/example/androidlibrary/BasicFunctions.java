@@ -38,7 +38,7 @@ public class BasicFunctions {
         return formatter.format(date);
     }
 
-    public void setAdapter(RecyclerView recyclerView, List<String> mNameList, RecyclerView.LayoutManager linearLayoutManager) {
+    public static void setAdapter(RecyclerView recyclerView, List<String> mNameList, RecyclerView.LayoutManager linearLayoutManager) {
         if (recyclerView != null) {
             recyclerView.setLayoutManager(linearLayoutManager);
             CustomAdapter customAdapter = new CustomAdapter(mNameList);

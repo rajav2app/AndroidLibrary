@@ -12,6 +12,7 @@ import java.util.List;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
 private List<String> localDataSet;
+private ListItemListener listener;
 
 /**
  * Provide a reference to the type of views that you are using
@@ -25,6 +26,12 @@ public static class ViewHolder extends RecyclerView.ViewHolder {
         // Define click listener for the ViewHolder's View
 
         textView = (TextView) view.findViewById(R.id.textView);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // listener.onItemClick(view, getAdapterPosition());
+            }
+        });
     }
 
     public TextView getTextView() {
@@ -59,6 +66,13 @@ public static class ViewHolder extends RecyclerView.ViewHolder {
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTextView().setText(localDataSet.get(position));
+
+        viewHolder.getTextView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClick(view, position);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -66,4 +80,10 @@ public static class ViewHolder extends RecyclerView.ViewHolder {
     public int getItemCount() {
         return localDataSet.size();
     }
+
+    public interface ListItemListener {
+        void onItemClick(View v, int position);
+    }
+
+
 }

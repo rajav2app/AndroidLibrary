@@ -1,10 +1,14 @@
 package com.example.androidlibrary;
 
+import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.TimeZone;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
 
 import java.util.Date;
 import java.util.List;
@@ -45,4 +49,31 @@ public class BasicFunctions {
             recyclerView.setAdapter(customAdapter);
         }
     }
+
+    public static void initializecharts(PieChart chart){
+            chart.setUsePercentValues(false);
+            chart.getDescription().setEnabled(false);
+            chart.setExtraOffsets(5, 10, 5, 5);
+
+            chart.setDragDecelerationFrictionCoef(0.95f);
+
+            chart.setDrawHoleEnabled(false);
+
+            chart.setRotationAngle(0);
+            // enable rotation of the chart by touch
+            chart.setRotationEnabled(true);
+            chart.setHighlightPerTapEnabled(true);
+
+            chart.setEntryLabelColor(Color.WHITE);
+            chart.setEntryLabelTextSize(18f);
+            chart.getLegend().setEnabled(false);
+            // undo all highlights
+            chart.highlightValues(null);
+
+            chart.animateY(1000, Easing.EaseInOutBounce);
+
+            chart.setData(null);
+            chart.invalidate();
+        }
+
 }

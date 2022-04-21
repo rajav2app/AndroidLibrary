@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1B5B87</color>
+    <color name="colorPrimaryDark">#174E74</color>
+    <color name="colorAccent">#777777</color>
+    <color name="giHeadingText">#FFFFFF</color>
+    <color name="giNotConnected">#777777</color>
+    <color name="giConnected">#0098CB</color>
+    <color name="giActive">#2B9D23</color>
+    <color name="giStopped">#D40203</color>
+
+    <color name="valColor">#0055AA</color>
+
+    <color name="listItemSelectedColor">#EDEEEF</color>
+
+    <color name="textViewColor">#161616</color>
+
+    <color name="patItemBgSelect">#D7F5FF</color>
+    <color name="patItemBg">#E9F8FF</color>
+
+    <color name="view_item_not_selected">#EEEEEE</color>
+
+    <color name="snackbar_bg_color">#C62828</color>
+
+    <!--Added by jayamurugan 24-Dec-2021-->
+    <color name="layout_bg_color">#E5E9EC</color>
+    <color name="ll_care_area_bg_color">#F5F5F5</color>
+    <color name="black_color">#000000</color>
+    <color name="white_color">#FFFFFF</color>
+    <color name="ll_chart_bg_color">#FFFFFF</color>
+    <color name="filter_icon_bg_color">#1B5B87</color>
+    <color name="grid_item_bg_color">#FFFFFF</color>
+    <color name="ll_battery_bg_color">@color/colorPrimary</color>
+    <color name="icon_color">@color/colorPrimary</color>
+    <color name="dialog_title_bg_color">@color/colorPrimary</color>
+    <color name="toolbar_color">@color/colorPrimary</color>
+    <color name="dialog_bg_color">#F5F5F5</color>
+    <color name="et_underline_color">#777777</color>
+    <color name="dr_cal_title_color">#174E74</color>
+    <color name="dr_cal_selected_row_color">#40000000</color>
+    <color name="event_info_text_color">#283593</color>
+    <color name="medication_tab_text_color">#174E74</color>
+    <color name="medication_tab_un_selected_text_color">#1B5B87</color>
+    <color name="medication_iv_bg_color">#C8CBCE</color>
+</resources>

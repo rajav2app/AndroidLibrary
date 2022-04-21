@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.androidlibrary.customviews.VtitanSearchView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/ll_sch_layout"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:orientation="vertical"
+        android:background="@color/ll_chart_bg_color">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconMode="custom"
+            app:endIconTint="@color/icon_color"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/icon_color"
+            android:textColorHint="@color/dr_cal_selected_row_color">
+
+            <AutoCompleteTextView
+                android:id="@+id/editSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ -0123456789/"
+                android:ems="10"
+                android:hint="@string/device_name"
+                android:imeOptions="actionSearch"
+                android:inputType="textCapCharacters"
+                android:maxLength="30"
+                android:minHeight="45dp"
+                android:paddingEnd="30dp"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textAllCaps="true"
+                android:backgroundTint="@color/et_underline_color"
+                android:textColor="@color/textViewColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_free_device"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTintMode="multiply"
+                app:layoutManager="LinearLayoutManager" />
+
+            <TextView
+                android:id="@+id/txt_noData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:text="Device not found."
+                android:textColor="@color/textViewColor"
+                android:textSize="@dimen/text_size_18sp"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"/>
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center|bottom"
+                android:indeterminateTint="@color/valColor"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</com.example.androidlibrary.customviews.VtitanSearchView>

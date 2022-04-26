@@ -24,9 +24,10 @@ public class VtitanRecyclerView extends RecyclerView {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setAdapter( List<String> mNameList, RecyclerView.LayoutManager linearLayoutManager) {
+   /*public void setAdapter( List<String> mNameList, RecyclerView.LayoutManager linearLayoutManager) {
            setLayoutManager(linearLayoutManager);
-            CustomAdapter customAdapter = new CustomAdapter(mNameList);
+            CustomAdapter customAdapter = new CustomAdapter();
+            customAdapter.setFreeDeviceList(mNameList);
             setAdapter(customAdapter);
-    }
+    }*/
 }

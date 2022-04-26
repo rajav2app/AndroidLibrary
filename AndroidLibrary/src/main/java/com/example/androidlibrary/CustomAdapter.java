@@ -1,89 +1,79 @@
 package com.example.androidlibrary;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-
-private List<String> localDataSet;
-private ListItemListener listener;
-
-/**
- * Provide a reference to the type of views that you are using
- * (custom ViewHolder).
- */
-public static class ViewHolder extends RecyclerView.ViewHolder {
-    private final TextView textView;
-
-    public ViewHolder(View view) {
-        super(view);
-        // Define click listener for the ViewHolder's View
-
-        textView = (TextView) view.findViewById(R.id.textView);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // listener.onItemClick(view, getAdapterPosition());
-            }
-        });
+public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.FreeDeviceViewHolder> {
+    private List<String> freeDeviceList;
+    private FreeDeviceListener listener = null;
+    public CustomAdapter(FreeDeviceListener listener ) {
+       this.listener = listener;
     }
 
-    public TextView getTextView() {
-        return textView;
-    }
-}
 
-    /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView.
-     */
-    public CustomAdapter(List<String> dataSet) {
-        this.localDataSet = dataSet;
-    }
 
-    // Create new views (invoked by the layout manager)
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.recyclerview_item, viewGroup, false);
-
-        return new ViewHolder(view);
+    public FreeDeviceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+      final View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recyclerview_item, parent, false);
+        return new FreeDeviceViewHolder(view);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    public void setFreeDeviceList(List<String> freeDeviceList){
+        this.freeDeviceList = freeDeviceList;
+        notifyDataSetChanged();
+
+    }
+
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(final FreeDeviceViewHolder holder, @SuppressLint("RecyclerView") final int i) {
 
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
-        viewHolder.getTextView().setText(localDataSet.get(position));
+        if(freeDeviceList != null) {
 
-        viewHolder.getTextView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onItemClick(view, position);
-            }
-        });
+            holder.txFreeDevice.setText(freeDeviceList.get(i));
+
+           holder.llFreeDevice.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onSelectedItem(freeDeviceList.get(i));
+                }
+            });
+
+
+        }
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.size();
+        if(freeDeviceList == null){
+            return 0;
+        }
+        return freeDeviceList.size();
     }
 
-    public interface ListItemListener {
-        void onItemClick(View v, int position);
+
+    class FreeDeviceViewHolder extends RecyclerView.ViewHolder {
+        final TextView txFreeDevice;
+       final LinearLayout llFreeDevice;
+
+        FreeDeviceViewHolder(View view) {
+            super(view);
+            txFreeDevice = view.findViewById(R.id.txFreeDevice);
+            llFreeDevice=view.findViewById(R.id.llFreeDevice);
+        }
+
     }
 
+    public interface FreeDeviceListener {
+        void onSelectedItem(String devID);
+    }
 
 }

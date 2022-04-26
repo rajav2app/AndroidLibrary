@@ -28,12 +28,12 @@ public class RecyclerViewFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView=inflater.inflate(R.layout.fragment_recycler_view, container, false);
         recyclerView=rootView.findViewById(R.id.recyclerView);
-        if(recyclerView!=null){
+       /* if(recyclerView!=null){
             linearLayoutManager=new LinearLayoutManager(getContext());
             recyclerView.setLayoutManager(linearLayoutManager);
             customAdapter=new CustomAdapter(mNameList);
             recyclerView.setAdapter(customAdapter);
-        }
+        }*/
         return rootView;
 
     }

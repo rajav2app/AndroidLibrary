@@ -3,18 +3,21 @@ package com.example.androidlibrary.customviews;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.Editable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,17 +35,12 @@ public class searchbar extends LinearLayout  {
      private Context mContext;
      private TextView txt_noData;
      private ProgressBar loading;
+     private SearchView searchView;
+    String querytext="";
 
     public searchbar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
-       // View view=LayoutInflater.from(context).inflate(R.layout.searchbar, this, true);
-       // vg = (ViewGroup) view.findViewById(R.id.ll_sch_layout);
-       // relativeLayout= (ViewGroup) view.findViewById(R.id.rlrecyclerView);
-       // rv_free_device= (RecyclerView) view.findViewById(R.id.rv_free_device);
-        /*setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
-*/
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.searchbar, this,true);
@@ -54,6 +52,7 @@ public class searchbar extends LinearLayout  {
         rv_free_device = (RecyclerView) view.findViewById(R.id.rv_free_device);
         txt_noData=(TextView)view.findViewById(R.id.txt_noData);
         loading=(ProgressBar)view.findViewById(R.id.loading);
+        searchView=(SearchView)view.findViewById(R.id.searchView);
         Log.i("ADAPTER", "RecyclerView has been initialized.");
     }
 
@@ -63,17 +62,6 @@ public class searchbar extends LinearLayout  {
         Log.i("ADAPTER", "RecyclerView has been setup.");
     }
 
-    /*@Override
-    public void addView(View child, int index, ViewGroup.LayoutParams params) {
-        final int id = child.getId();
-        if (id == R.id.ll_sch_layout || id == R.id.searchView) {
-            super.addView(child, index, params);
-        }
-        else {
-            //vg.addView(child, index, params);
-           // relativeLayout.addView(child,index,params);
-        }
-    }*/
     public void setAdapter(CustomAdapter adapter,List<String>dataSet) {
        if(dataSet!=null && dataSet.size()>0){
            txt_noData.setVisibility(GONE);
@@ -88,16 +76,25 @@ public class searchbar extends LinearLayout  {
         Log.i("ADAPTER", "Adapter has been set." + customAdapter.getItemCount());
     }
 
-    /*public void setAdapter(List<String> mNameList, LinearLayoutManager linearLayoutManager) {
-       if(rv_free_device!=null) {
-         rv_free_device.setLayoutManager(linearLayoutManager);
-           customAdapter = new CustomAdapter();
-           customAdapter.setFreeDeviceList(mNameList);
-           rv_free_device.setAdapter(customAdapter);
-       }else{
-           Log.i("TAG","IDS : "+1);
-       }
 
-    }*/
+    SearchView.OnQueryTextListener listener=new SearchView.OnQueryTextListener() {
 
+        @Override
+        public boolean onQueryTextSubmit(String query) {
+            // collapse the view ?
+            //menu.findItem(R.id.menu_search).collapseActionView();
+            Log.e("queryText",query);
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            // search goes here !!
+            // listAdapter.getFilter().filter(query);
+            Log.e("queryText",newText);
+            return false;
+        }
+
+
+    };
 }

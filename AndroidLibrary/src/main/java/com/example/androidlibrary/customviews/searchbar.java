@@ -27,6 +27,7 @@ import com.example.androidlibrary.CustomAdapter;
 import com.example.androidlibrary.R;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class searchbar extends LinearLayout  {
@@ -36,7 +37,8 @@ public class searchbar extends LinearLayout  {
      private TextView txt_noData;
      private ProgressBar loading;
      private SearchView searchView;
-    String querytext="";
+     private List<String >filterNameList=new ArrayList<>();
+
 
     public searchbar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -64,6 +66,7 @@ public class searchbar extends LinearLayout  {
 
     public void setAdapter(CustomAdapter adapter,List<String>dataSet) {
        if(dataSet!=null && dataSet.size()>0){
+           filterNameList.addAll(dataSet);
            txt_noData.setVisibility(GONE);
            customAdapter = adapter;
            customAdapter.setFreeDeviceList(dataSet);
@@ -75,6 +78,19 @@ public class searchbar extends LinearLayout  {
        }
         Log.i("ADAPTER", "Adapter has been set." + customAdapter.getItemCount());
     }
+
+
+    public void filter(String text) {
+        List<String> filteredList = new ArrayList<>();
+        for (String item : filterNameList) {
+            if (item.toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        customAdapter.filterList(filteredList);
+    }
+
 
 
     SearchView.OnQueryTextListener listener=new SearchView.OnQueryTextListener() {

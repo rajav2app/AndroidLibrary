@@ -76,4 +76,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.FreeDevice
         void onSelectedItem(String devID);
     }
 
+    public void filterList(List<String> filteredList) {
+        freeDeviceList = filteredList;
+        notifyDataSetChanged();
+    }
+
 }

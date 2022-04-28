@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.36302083333333335" />
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/drawable/search_bg.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/fragment_recycler_view.xml" value="0.1" />

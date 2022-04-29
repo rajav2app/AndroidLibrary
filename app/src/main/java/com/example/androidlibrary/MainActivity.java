@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSelectedItem(String devID) {
                 Log.i("RESULT",devID);
-               // startActivity(new Intent(MainActivity.this,NewComponentActivity.class));
+
             }
         }), datasets);
 

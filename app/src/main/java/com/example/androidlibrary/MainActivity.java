@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-               // Log.i(TAG,"ONCHANGES"+s);
                 llSearch.filter(s);
                 return false;
             }

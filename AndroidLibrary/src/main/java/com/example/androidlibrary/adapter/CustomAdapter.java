@@ -1,4 +1,4 @@
-package com.example.androidlibrary;
+package com.example.androidlibrary.adapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.androidlibrary.R;
 
 import java.util.List;
 

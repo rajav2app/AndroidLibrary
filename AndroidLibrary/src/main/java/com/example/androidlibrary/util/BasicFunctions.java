@@ -1,4 +1,4 @@
-package com.example.androidlibrary;
+package com.example.androidlibrary.util;
 
 import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;

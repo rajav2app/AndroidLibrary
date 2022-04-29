@@ -14,8 +14,8 @@
           android:layout_marginEnd="10dp"
           android:layout_marginStart="10dp"
           android:queryHint="@string/device_name"
+          android:iconifiedByDefault="false"
           android:imeOptions="actionSearch">
-
       </SearchView>
 
     <RelativeLayout
@@ -39,22 +39,11 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="20dp"
-                android:text="Device not found."
+                android:text="@string/name_not_found"
                 android:textColor="@color/textViewColor"
                 android:textSize="@dimen/text_size_18sp"
                 android:layout_centerHorizontal="true"
                 android:visibility="gone"/>
-            <ProgressBar
-                android:id="@+id/loading"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center|bottom"
-                android:indeterminateTint="@color/valColor"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentLeft="true"
-                android:visibility="gone"/>
-
         </RelativeLayout>
    </LinearLayout>
 </merge>

@@ -5,18 +5,18 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.androidlibrary.customviews.VtitanRecyclerView;
-import com.example.androidlibrary.customviews.VtitanSearchView;
-import com.example.androidlibrary.customviews.searchbar;
+import com.example.androidlibrary.adapter.CustomAdapter;
+import com.example.androidlibrary.customviews.vSearchView;
+import com.example.androidlibrary.customviews.vTextInputLayout;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +28,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        searchbar llSearch = findViewById(R.id.llSearch);
+        vSearchView llSearch = findViewById(R.id.llSearch);
         SearchView searchView=findViewById(R.id.searchView);
+        Button btn_submit=findViewById(R.id.btn_submit);
+
+        vTextInputLayout textInputLayout=findViewById(R.id.txtinput);
+        TextInputEditText editSSID=textInputLayout.findViewById(R.id.textInputEditText);
+        TextInputLayout textInputLayoutSSID=textInputLayout.findViewById(R.id.textInput);
+        textInputLayoutSSID.setHint("Hospital SSID");
+
+        vTextInputLayout txtinputPassword=findViewById(R.id.txtinputPassword);
+        TextInputEditText editPassword=txtinputPassword.findViewById(R.id.textInputEditText);
+        TextInputLayout textInputLayoutPassword=txtinputPassword.findViewById(R.id.textInput);
+        textInputLayoutPassword.setHint("Wifi-Password");
+
         addDatas();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         llSearch.setAdapter(new CustomAdapter(new CustomAdapter.FreeDeviceListener() {
             @Override
             public void onSelectedItem(String devID) {
                 Log.i("RESULT",devID);
+               // startActivity(new Intent(MainActivity.this,NewComponentActivity.class));
             }
         }), datasets);
 
@@ -55,6 +68,15 @@ public class MainActivity extends AppCompatActivity {
         });
        //SearchView searchView= llSearch.findViewById(R.id.searchView);
         //String text=llSearch.getQueryText();
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("RESULT",editSSID.getText().toString());
+                Log.i("RESULT",editPassword.getText().toString());
+
+            }
+        });
 
     }
 

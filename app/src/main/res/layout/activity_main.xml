@@ -7,11 +7,31 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.example.androidlibrary.customviews.searchbar
+    <com.example.androidlibrary.customviews.vSearchView
         android:id="@+id/llSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </com.example.androidlibrary.customviews.searchbar>
+    </com.example.androidlibrary.customviews.vSearchView>
+
+    <com.example.androidlibrary.customviews.vTextInputLayout
+        android:id="@+id/txtinput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.androidlibrary.customviews.vTextInputLayout>
+
+    <com.example.androidlibrary.customviews.vTextInputLayout
+        android:id="@+id/txtinputPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.example.androidlibrary.customviews.vTextInputLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_gravity="center"
+        android:gravity="center"/>
 
 </LinearLayout>

@@ -1,36 +1,26 @@
 package com.example.androidlibrary.customviews;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.text.Editable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidlibrary.CustomAdapter;
+import com.example.androidlibrary.adapter.CustomAdapter;
 import com.example.androidlibrary.R;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class searchbar extends LinearLayout  {
+public class vSearchView extends LinearLayout  {
      private RecyclerView rv_free_device;
      private CustomAdapter customAdapter;
      private Context mContext;
@@ -38,22 +28,19 @@ public class searchbar extends LinearLayout  {
      private ProgressBar loading;
      private SearchView searchView;
      private List<String >filterNameList=new ArrayList<>();
-
-
-    public searchbar(Context context, @Nullable AttributeSet attrs) {
+    public vSearchView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.searchbar, this,true);
+        View view = inflater.inflate(R.layout.vsearchview, this,true);
         findViewsById(view);
         setupRecyclerView();
-    }
 
+    }
     private void findViewsById(View view) {
         rv_free_device = (RecyclerView) view.findViewById(R.id.rv_free_device);
         txt_noData=(TextView)view.findViewById(R.id.txt_noData);
-        loading=(ProgressBar)view.findViewById(R.id.loading);
         searchView=(SearchView)view.findViewById(R.id.searchView);
         Log.i("ADAPTER", "RecyclerView has been initialized.");
     }
@@ -64,13 +51,17 @@ public class searchbar extends LinearLayout  {
         Log.i("ADAPTER", "RecyclerView has been setup.");
     }
 
+
+
+
     public void setAdapter(CustomAdapter adapter,List<String>dataSet) {
-       if(dataSet!=null && dataSet.size()>0){
+        if(dataSet!=null && dataSet.size()>0){
            filterNameList.addAll(dataSet);
            txt_noData.setVisibility(GONE);
            customAdapter = adapter;
            customAdapter.setFreeDeviceList(dataSet);
            rv_free_device.setAdapter(customAdapter);
+           rv_free_device.setVisibility(GONE);
 
        }else{
            rv_free_device.setVisibility(GONE);
@@ -87,10 +78,19 @@ public class searchbar extends LinearLayout  {
                 filteredList.add(item);
             }
         }
+        if(filteredList.size()>0 && text.length()>1){
+            rv_free_device.setVisibility(VISIBLE);
+            txt_noData.setVisibility(GONE);
+        }else{
+            rv_free_device.setVisibility(GONE);
+            txt_noData.setVisibility(VISIBLE);
+        }
+        if(text.isEmpty()){
+            txt_noData.setVisibility(GONE);
+        }
 
         customAdapter.filterList(filteredList);
     }
-
 
 
     SearchView.OnQueryTextListener listener=new SearchView.OnQueryTextListener() {

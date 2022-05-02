@@ -44,7 +44,6 @@ public class vTextInputLayout extends LinearLayout {
     private void findViewsById(View view) {
         textInput = (TextInputLayout) view.findViewById(R.id.textInput);
         textInputEditText=(TextInputEditText) view.findViewById(R.id.textInputEditText);
-        Log.i("ADAPTER", "RecyclerView has been initialized.");
     }
 
     @Override

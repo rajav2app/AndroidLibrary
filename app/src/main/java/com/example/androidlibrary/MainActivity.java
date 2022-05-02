@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import com.example.androidlibrary.adapter.CustomAdapter;
+import com.example.androidlibrary.app.MyApplication;
 import com.example.androidlibrary.customviews.vSearchView;
 import com.example.androidlibrary.customviews.vTextInputLayout;
 import com.google.android.material.textfield.TextInputEditText;
@@ -31,13 +33,14 @@ public class MainActivity extends AppCompatActivity {
         vSearchView llSearch = findViewById(R.id.llSearch);
         SearchView searchView=findViewById(R.id.searchView);
         Button btn_submit=findViewById(R.id.btn_submit);
-
-        vTextInputLayout textInputLayout=findViewById(R.id.txtinput);
+        Button btn_Mode=findViewById(R.id.btn_Mode);
+        final SessionManager sessionManager=new SessionManager(this);
+        vTextInputLayout textInputLayout=findViewById(R.id.txtInputSSID);
         TextInputEditText editSSID=textInputLayout.findViewById(R.id.textInputEditText);
         TextInputLayout textInputLayoutSSID=textInputLayout.findViewById(R.id.textInput);
         textInputLayoutSSID.setHint("Hospital SSID");
 
-        vTextInputLayout txtinputPassword=findViewById(R.id.txtinputPassword);
+        vTextInputLayout txtinputPassword=findViewById(R.id.txtInputPassword);
         TextInputEditText editPassword=txtinputPassword.findViewById(R.id.textInputEditText);
         TextInputLayout textInputLayoutPassword=txtinputPassword.findViewById(R.id.textInput);
         textInputLayoutPassword.setHint("Wifi-Password");
@@ -74,6 +77,23 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("RESULT",editSSID.getText().toString());
                 Log.i("RESULT",editPassword.getText().toString());
 
+            }
+        });
+
+        btn_Mode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (sessionManager.isLightModeOn()) {
+                    sessionManager.savelightmode(false);
+                    MyApplication.setDarkLightTheme(0);
+                    overridePendingTransition(0, 0);
+                    //img_btn_dark_light.setImageDrawable(getResources().getDrawable(R.drawable.ic_light_mode));
+                } else {
+                    sessionManager.savelightmode(true);
+                    MyApplication.setDarkLightTheme(1);
+                    overridePendingTransition(0, 0);
+                   // img_btn_dark_light.setImageDrawable(getResources().getDrawable(R.drawable.ic_night_light));
+                }
             }
         });
 

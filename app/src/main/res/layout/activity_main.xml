@@ -15,13 +15,13 @@
     </com.example.androidlibrary.customviews.vSearchView>
 
     <com.example.androidlibrary.customviews.vTextInputLayout
-        android:id="@+id/txtinput"
+        android:id="@+id/txtInputSSID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </com.example.androidlibrary.customviews.vTextInputLayout>
 
     <com.example.androidlibrary.customviews.vTextInputLayout
-        android:id="@+id/txtinputPassword"
+        android:id="@+id/txtInputPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </com.example.androidlibrary.customviews.vTextInputLayout>
@@ -31,6 +31,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_Mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Mode"
         android:layout_gravity="center"
         android:gravity="center"/>
 

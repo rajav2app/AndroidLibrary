@@ -11,7 +11,7 @@
         android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxStrokeColor="@color/prograss_bar"
+        app:boxStrokeColor="@color/text_input_bg"
         app:hintTextColor="@color/textViewColor"
         android:padding="5dp">
 

@@ -5,6 +5,67 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="black">#FFFFFFFF</color>
+    <color name="white">#FF000000</color>
+    <color name="free_device">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#1B5B87</color>
+    <color name="colorPrimaryDark">#174E74</color>
+    <color name="colorAccent">#777777</color>
+
+    <color name="textViewColor">#FF000000</color>
+    <color name="valColor">#00aeef</color>
+
+    <color name="giNotConnected">#777777</color>
+    <color name="giConnected">#0098CB</color>
+    <color name="giActive">#269c47</color>
+    <color name="giStopped">#D40203</color>
+    <color name="giwarnning">#c79602</color>
+    <color name="indicator">#0C8F8F</color>
+
+    <color name="card_background">#FFFFFF</color>
+    <color name="prograss_bar">#61BAE1</color>
+    <color name="tool_bar">#1B5B87</color>
+    <color name="tool_bar_text">#FFFFFF</color>
+    <color name="dashboard_layout_background">#E5E9EC</color>
+    <color name="dialog_fragment_title_background">#1B5B87</color>
+    <color name="spinner_background">#E5E9EC</color>
+
+    <color name="drug_list_selection">#126082</color>
+    <color name="drug_list_orange">#E67F10</color>
+    <color name="scroll">#989393</color>
+    <color name="snackbar_bg_color">#C62828</color>
+    <color name="drug_name_color">#000000</color>
+    <color name="tab_background_color">#1B5B87</color>
+    <color name="track_color">#C8C8C8</color>
+    <color name="dr_cal_selected_row_color">#777777</color>
+    <color name="et_underline_color">#bbbbbb</color>
+
+    <color name="patItemBgSelect">#D7F5FF</color>
+    <color name="patItemBg">#E9F8FF</color>
+
+    <!--Medication Scheduler -->
+    <color name="dialog_bg_color">#F5F5F5</color>
+    <color name="view_item_not_selected">#EEEEEE</color>
+    <color name="medication_tab_text_color">#174E74</color>
+    <color name="medication_tab_un_selected_text_color">#1B5B87</color>
+    <color name="medication_iv_bg_color">#C8CBCE</color>
+
+    <color name="underline_color">#777777</color>
+    <color name="icon_color">@color/colorPrimary</color>
+    <color name="bg_item_normal_state">#fff0f0f0</color>
+    <color name="bg_item_dragging_state">#ffffdddd</color>
+    <color name="bg_item_dragging_active_state">#ffff9999</color>
+    <color name="bg_swipe_item_neutral">@android:color/transparent</color>
+    <color name="btn_color">#1b6686</color>
+    <color name="card">#6F7BEC</color>
+
+    <!--new UI design-->
+    <color name="half_black">#808080</color>
+    <color name="dash_rate">#808080</color>
+    <color name="dash_rateunit">#006089</color>
+    <color name="n_white">#ffffff</color>
+    <color name="n_black">#000000</color>
+
 </resources>

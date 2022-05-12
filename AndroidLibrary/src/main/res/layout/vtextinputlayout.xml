@@ -12,8 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxStrokeColor="@color/text_input_bg"
-        app:hintTextColor="@color/textViewColor"
-        android:padding="5dp">
+        android:padding="3dp"
+        app:hintTextColor="@color/half_black"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText"
@@ -21,10 +27,10 @@
             android:layout_height="wrap_content"
             android:hint=""
             android:inputType="text"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:saveEnabled="false"
+            android:textColor="@color/textViewColor"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-
-
 </LinearLayout>
 </merge>

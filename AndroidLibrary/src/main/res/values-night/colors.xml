@@ -66,4 +66,6 @@
     <!--new ui -->
     <color name="n_white">#000000</color>
     <color name="n_black">#ffffff</color>
+
+    <color name="disable">#697479</color>
 </resources>

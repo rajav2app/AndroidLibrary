@@ -68,4 +68,6 @@
     <color name="n_white">#ffffff</color>
     <color name="n_black">#000000</color>
 
+    <color name="disable">#ECECEC</color>
+
 </resources>

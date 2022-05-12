@@ -5,14 +5,23 @@
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.36302083333333335" />
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="AndroidLibrary/src/main/res/drawable/ic_search.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/drawable/search_bg.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/drawable/text_input_bg.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/fragment_recycler_view.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/recyclerview.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/recyclerview_item.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/searchbar.xml" value="0.1" />
+        <entry key="AndroidLibrary/src/main/res/layout/spinner_item.xml" value="0.1" />
+        <entry key="AndroidLibrary/src/main/res/layout/vradiobutton.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/vsearchview.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/vtextinputlayout.xml" value="0.1" />
+        <entry key="AndroidLibrary/src/main/res/layout/vtextinputlayoutpassword.xml" value="0.1" />
+        <entry key="AndroidLibrary/src/main/res/layout/vtextinputlayoutspinner.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_med_route_im.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_med_route_iv.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_med_route_oral.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_new_component.xml" value="0.1" />
       </map>

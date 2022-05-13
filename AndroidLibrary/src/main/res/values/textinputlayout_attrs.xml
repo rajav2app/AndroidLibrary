@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VtitanTextInputLayout">
+            <attr name="backgroundColour" format="color" />
+          <attr name="textSize" format="dimension" />
+          <attr name="hint" format="string"/>
+         <attr name="helperText" format="string"/>
+          <attr name="textColor" format="color"/>
+         <attr name="hintTextColor" format="color"/>
+        <attr name="textinputbackground" format="integer" />
+        <attr name="maxLength" format="dimension" />
+        <attr name="rightDrawable" format="reference"/>
+        <attr name="leftDrawable" format="reference"/>
+        <attr name="rightIconMode" format="integer" />
+    </declare-styleable>
+</resources>

@@ -15,16 +15,16 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
-public class vTextInputLayoutSpinner extends LinearLayout {
+public class VtitanTextInputLayoutSpinner extends LinearLayout {
     private TextInputLayout textInputSpinner;
     private AutoCompleteTextView autoCompleteTextView;
     private Context mContext;
-    public vTextInputLayoutSpinner(Context context) {
+    public VtitanTextInputLayoutSpinner(Context context) {
         super(context);
 
     }
 
-    public vTextInputLayoutSpinner(Context context, @Nullable AttributeSet attrs) {
+    public VtitanTextInputLayoutSpinner(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
@@ -34,7 +34,7 @@ public class vTextInputLayoutSpinner extends LinearLayout {
 
     }
 
-    public vTextInputLayoutSpinner(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public VtitanTextInputLayoutSpinner(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

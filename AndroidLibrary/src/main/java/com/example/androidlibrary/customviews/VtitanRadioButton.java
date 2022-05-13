@@ -1,7 +1,6 @@
 package com.example.androidlibrary.customviews;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,19 +9,11 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.MultiTransformation;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.androidlibrary.R;
-import com.google.android.material.shape.RoundedCornerTreatment;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
-public class vRadioButton extends LinearLayout {
+public class VtitanRadioButton extends LinearLayout {
 
     private View view;
     private RadioButton radioButton;
@@ -32,18 +23,18 @@ public class vRadioButton extends LinearLayout {
         void onCheckedChangeListener(boolean ischecked);
     }
     private OnCheckedChangeListener mOnCheckedChangeListener;
-    public vRadioButton(Context context) {
+    public VtitanRadioButton(Context context) {
         super(context);
     }
 
-    public vRadioButton(Context context, @Nullable AttributeSet attrs) {
+    public VtitanRadioButton(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.vradiobutton, this,true);
         findViewsById(view);
-      radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean ischecked) {
                 if(mOnCheckedChangeListener != null){
@@ -54,7 +45,7 @@ public class vRadioButton extends LinearLayout {
 
     }
 
-    public vRadioButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public VtitanRadioButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -98,5 +89,4 @@ public class vRadioButton extends LinearLayout {
     public void setmOnCheckedChangeListener(OnCheckedChangeListener onLoadingClickListener){
         mOnCheckedChangeListener = onLoadingClickListener;
     }
-
 }

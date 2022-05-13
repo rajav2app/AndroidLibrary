@@ -25,15 +25,15 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vSearchView extends LinearLayout  {
-    private TextInputLayout textInputSpinner;
+public class VtitanSearchView extends LinearLayout  {
+    private TextInputLayout textInputSearch;
     private AutoCompleteTextView autoCompleteTextView;
     private Context mContext;
-    public vSearchView(Context context) {
+    public VtitanSearchView(Context context) {
         super(context);
 
     }
-    public vSearchView(Context context, @Nullable AttributeSet attrs) {
+    public VtitanSearchView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
@@ -41,12 +41,12 @@ public class vSearchView extends LinearLayout  {
         View view = inflater.inflate(R.layout.vsearchview, this,true);
         findViewsById(view);
       //  setupRecyclerView();
-      // textInputSpinner.setEndIconMode(END_ICON_CLEAR_TEXT);
+        textInputSearch.setEndIconMode(END_ICON_CLEAR_TEXT);
 
     }
 
     private void findViewsById(View view) {
-        textInputSpinner = (TextInputLayout) view.findViewById(R.id.textInputSpinner);
+        textInputSearch = (TextInputLayout) view.findViewById(R.id.textInputSpinner);
         autoCompleteTextView=(AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
     }
 
@@ -69,15 +69,15 @@ public class vSearchView extends LinearLayout  {
     }
 
     public void setHint(CharSequence value){
-        textInputSpinner.setHint(value);
+        textInputSearch.setHint(value);
     }
 
     public void setenable(boolean enable){
         autoCompleteTextView.setEnabled(enable);
         if(!enable){
-            textInputSpinner.setBoxBackgroundColor(mContext.getColor(R.color.disable));
+            textInputSearch.setBoxBackgroundColor(mContext.getColor(R.color.disable));
         }else{
-            textInputSpinner.setBoxBackgroundColor(mContext.getColor(R.color.black));
+            textInputSearch.setBoxBackgroundColor(mContext.getColor(R.color.black));
         }
     }
     /*private void findViewsById(View view) {

@@ -1,35 +1,25 @@
 package com.example.androidlibrary;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.SearchView;
 
-import com.example.androidlibrary.adapter.CustomAdapter;
 import com.example.androidlibrary.app.MyApplication;
-import com.example.androidlibrary.customviews.vRadioButton;
-import com.example.androidlibrary.customviews.vSearchView;
-import com.example.androidlibrary.customviews.vTextInputLayout;
-import com.example.androidlibrary.customviews.vTextInputLayoutPassword;
-import com.example.androidlibrary.customviews.vTextInputLayoutSpinner;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+import com.example.androidlibrary.customviews.VtitanRadioButton;
+import com.example.androidlibrary.customviews.VtitanSearchView;
+import com.example.androidlibrary.customviews.VtitanTextInputLayout;
+import com.example.androidlibrary.customviews.VtitanTextInputLayoutPassword;
+import com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements VtitanTextInputLayout.OnEndIconClickListener, VtitanTextInputLayout.OnStartIconClickListener {
     List<String> datasets=new ArrayList<>();
 
     @Override
@@ -42,33 +32,35 @@ public class MainActivity extends AppCompatActivity  {
         Button btn_Mode=findViewById(R.id.btn_Mode);
         final SessionManager sessionManager=new SessionManager(this);
 
-        vTextInputLayout textInputLayout=findViewById(R.id.txtInputSSID);
+        VtitanTextInputLayout textInputLayout=findViewById(R.id.txtInputSSID);
         textInputLayout.setHint("Hospital SSID");
-        textInputLayout.setinputType(InputType.TYPE_CLASS_NUMBER);
+        textInputLayout.setInputType(InputType.TYPE_CLASS_TEXT);
 
-        vTextInputLayout txtUserName=findViewById(R.id.txtUserName);
+        VtitanTextInputLayout txtUserName=findViewById(R.id.txtUserName);
         txtUserName.setHint("User Name");
-
-
-        vTextInputLayoutPassword txtinputPassword=findViewById(R.id.password);
+        //txtUserName.setEndIcon(getDrawable(R.drawable.ic_search));
+        //txtUserName.setMaxLength(10);
+        txtUserName.setOnEndIconClickListener(this::onEndIconClickListener);
+        txtUserName.setOnStartIconClickListener(this::onStartIconClickListener);
+        VtitanTextInputLayoutPassword txtinputPassword=findViewById(R.id.password);
         txtinputPassword.setHint("Wifi-Password");
 
-        vTextInputLayoutSpinner spinner=findViewById(R.id.spinner);
+        VtitanTextInputLayoutSpinner spinner=findViewById(R.id.spinner);
         spinner.setSpinnerAdapter(datasets);
         spinner.setHint("Select Name");
 
-        vSearchView search=findViewById(R.id.llSearch);
+        VtitanSearchView search=findViewById(R.id.llSearch);
         search.setSpinnerAdapter(datasets);
         search.setHint("Select Name");
 
         final ImageButton btn_edit=findViewById(R.id.btn_edit);
         final ImageButton btn_save=findViewById(R.id.btn_save);
-        textInputLayout.setenable(false);
+        textInputLayout.setEnable(false);
         spinner.setenable(false);
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textInputLayout.setenable(true);
+                textInputLayout.setEnable(true);
                 spinner.setenable(true);
                 btn_edit.setVisibility(View.GONE);
                 btn_save.setVisibility(View.VISIBLE);
@@ -78,15 +70,15 @@ public class MainActivity extends AppCompatActivity  {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textInputLayout.setenable(false);
+                textInputLayout.setEnable(false);
                 spinner.setenable(false);
                 btn_edit.setVisibility(View.VISIBLE);
                 btn_save.setVisibility(View.GONE);
             }
         });
 
-        vRadioButton rb1=findViewById(R.id.rb1);
-        vRadioButton rb2=findViewById(R.id.rb2);
+        VtitanRadioButton rb1=findViewById(R.id.rb1);
+        VtitanRadioButton rb2=findViewById(R.id.rb2);
         rb1.setBackGround(R.drawable.ic_med_route_iv);
         rb2.setBackGround(getDrawable(R.drawable.ic_med_route_im));
         if(rb1.isChecked()){
@@ -169,4 +161,13 @@ public class MainActivity extends AppCompatActivity  {
         datasets.add("Subarayan");
     }
 
+    @Override
+    public void onEndIconClickListener() {
+        Log.i("RESULT","EndIconClicked");
+    }
+
+    @Override
+    public void onStartIconClickListener() {
+
+    }
 }

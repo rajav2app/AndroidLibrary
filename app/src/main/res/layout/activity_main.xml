@@ -7,24 +7,25 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.example.androidlibrary.customviews.vSearchView
+    <com.example.androidlibrary.customviews.VtitanSearchView
         android:id="@+id/llSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </com.example.androidlibrary.customviews.vSearchView>
+    </com.example.androidlibrary.customviews.VtitanSearchView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.example.androidlibrary.customviews.vTextInputLayout
+        <com.example.androidlibrary.customviews.VtitanTextInputLayout
             android:id="@+id/txtInputSSID"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content">
-        </com.example.androidlibrary.customviews.vTextInputLayout>
+            android:layout_height="wrap_content"
+            app:textColor="@color/textViewColor">
+        </com.example.androidlibrary.customviews.VtitanTextInputLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -57,36 +58,39 @@
     </LinearLayout>
 
 
-    <com.example.androidlibrary.customviews.vTextInputLayout
+    <com.example.androidlibrary.customviews.VtitanTextInputLayout
         android:id="@+id/txtUserName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </com.example.androidlibrary.customviews.vTextInputLayout>
+        android:layout_height="wrap_content"
+        app:textColor="@color/textViewColor"
+        app:hintTextColor="@color/half_black"
+        app:rightDrawable="@drawable/ic_search">
+    </com.example.androidlibrary.customviews.VtitanTextInputLayout>
 
-    <com.example.androidlibrary.customviews.vTextInputLayoutPassword
+    <com.example.androidlibrary.customviews.VtitanTextInputLayoutPassword
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </com.example.androidlibrary.customviews.vTextInputLayoutPassword>
+    </com.example.androidlibrary.customviews.VtitanTextInputLayoutPassword>
 
- <com.example.androidlibrary.customviews.vTextInputLayoutSpinner
+ <com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.example.androidlibrary.customviews.vTextInputLayoutSpinner>
+    </com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner>
 
-      <com.example.androidlibrary.customviews.vRadioButton
+      <com.example.androidlibrary.customviews.VtitanRadioButton
           android:id="@+id/rb1"
           android:layout_width="50dp"
           android:layout_height="50dp">
 
-      </com.example.androidlibrary.customviews.vRadioButton>
-      <com.example.androidlibrary.customviews.vRadioButton
+      </com.example.androidlibrary.customviews.VtitanRadioButton>
+      <com.example.androidlibrary.customviews.VtitanRadioButton
           android:id="@+id/rb2"
           android:layout_width="50dp"
           android:layout_height="50dp">
-      </com.example.androidlibrary.customviews.vRadioButton>
+      </com.example.androidlibrary.customviews.VtitanRadioButton>
 
 
     <Button

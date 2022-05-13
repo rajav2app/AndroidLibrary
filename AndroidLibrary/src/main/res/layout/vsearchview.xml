@@ -7,27 +7,26 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputSpinner"
-            app:endIconMode="clear_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             app:boxStrokeColor="@color/text_input_bg"
             app:hintTextColor="@color/textViewColor"
             app:startIconDrawable="@drawable/ic_search"
-            app:boxCornerRadiusBottomEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusTopStart="20dp"
+            app:boxCornerRadiusBottomEnd="5dp"
+            app:boxCornerRadiusBottomStart="5dp"
+            android:padding="3dp"
+            app:boxCornerRadiusTopEnd="5dp"
+            app:boxCornerRadiusTopStart="5dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined">
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:paddingStart="10dp"
                 android:textColor="@color/textViewColor"/>
 
         </com.google.android.material.textfield.TextInputLayout>

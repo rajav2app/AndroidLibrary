@@ -33,6 +33,9 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
     private int hintTextColor;
     private int background;
     private int maxLength;
+    private Drawable endIconDrawable;
+    private Drawable startIconDrawable;
+    private int endiconMode;
     public VtitanTextInputLayoutPassword(Context context) {
         super(context);
 
@@ -53,6 +56,9 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
             hintTextColor=a.getColor(R.styleable.VtitanTextInputLayout_hintTextColor,getResources().getColor(R.color.half_black));
             background=a.getResourceId(R.styleable.VtitanTextInputLayout_textinputbackground,0);
             maxLength=a.getDimensionPixelSize(R.styleable.VtitanTextInputLayout_maxLength,250);
+            endIconDrawable=a.getDrawable(R.styleable.VtitanTextInputLayout_rightDrawable);
+            startIconDrawable=a.getDrawable(R.styleable.VtitanTextInputLayout_leftDrawable);
+            endiconMode=a.getInteger(R.styleable.VtitanTextInputLayout_rightIconMode,-1);
         } finally {
             a.recycle();
         }
@@ -69,7 +75,9 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
         setHelperText(helperText);
         setBackground(background);
         setMaxLength(maxLength);
-
+        setEndIconMode(endiconMode);
+        setEndIcon(endIconDrawable);
+        setStartIcon(startIconDrawable);
 
     }
 

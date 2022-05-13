@@ -62,9 +62,7 @@
         android:id="@+id/txtUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:textColor="@color/textViewColor"
-        app:hintTextColor="@color/half_black"
-        app:rightDrawable="@drawable/ic_search">
+        app:textColor="@color/textViewColor">
     </com.example.androidlibrary.customviews.VtitanTextInputLayout>
 
     <com.example.androidlibrary.customviews.VtitanTextInputLayoutPassword

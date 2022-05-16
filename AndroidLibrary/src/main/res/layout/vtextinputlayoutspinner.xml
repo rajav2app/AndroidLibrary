@@ -27,7 +27,6 @@
                 android:layout_height="wrap_content"
                 android:inputType="none"
                 android:textColor="@color/textViewColor"/>
-
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 </merge>

@@ -96,23 +96,26 @@ public class VtitanTextInputLayout extends LinearLayout {
         setEndIcon(endIconDrawable);
         setStartIcon(startIconDrawable);
 
-        textInput.setEndIconOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mOnEndIconClickListener != null){
-                    mOnEndIconClickListener.onEndIconClickListener();
+       if(endIconDrawable!=null) {
+            textInput.setEndIconOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnEndIconClickListener != null) {
+                        mOnEndIconClickListener.onEndIconClickListener();
+                    }
                 }
-            }
-        });
-
-        textInput.setStartIconOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(mOnStartIconClickListener!=null){
-                    mOnEndIconClickListener.onEndIconClickListener();
+            });
+        }
+        if(startIconDrawable!=null) {
+            textInput.setStartIconOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mOnStartIconClickListener != null) {
+                        mOnStartIconClickListener.onStartIconClickListener();
+                    }
                 }
-            }
-        });
+            });
+        }
 
     }
     public VtitanTextInputLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -157,6 +160,7 @@ public class VtitanTextInputLayout extends LinearLayout {
     public void setEnable(boolean enable){
         textInputEditText.setEnabled(enable);
         if(!enable){
+            textInput.setStartIconOnClickListener(null);
             textInput.setBoxBackgroundColor(mContext.getColor(R.color.disable));
         }else{
             textInput.setBoxBackgroundColor(mContext.getColor(R.color.black));

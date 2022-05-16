@@ -75,9 +75,9 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
         setHelperText(helperText);
         setBackground(background);
         setMaxLength(maxLength);
-        setEndIconMode(endiconMode);
-        setEndIcon(endIconDrawable);
-        setStartIcon(startIconDrawable);
+        //setEndIconMode(endiconMode);
+       // setEndIcon(endIconDrawable);
+       // setStartIcon(startIconDrawable);
 
     }
 

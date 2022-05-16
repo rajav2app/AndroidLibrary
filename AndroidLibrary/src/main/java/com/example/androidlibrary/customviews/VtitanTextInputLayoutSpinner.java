@@ -68,6 +68,7 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
     public void setenable(boolean enable){
         autoCompleteTextView.setEnabled(enable);
         if(!enable){
+            textInputSpinner.setEndIconOnClickListener(null);
             textInputSpinner.setBoxBackgroundColor(mContext.getColor(R.color.disable));
         }else{
             textInputSpinner.setBoxBackgroundColor(mContext.getColor(R.color.black));

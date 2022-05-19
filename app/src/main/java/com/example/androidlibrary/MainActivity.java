@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
         txtinputPassword.setHint("Wifi-Password");
 
         //txtinputPassword.setEnable(true);
-        txtinputPassword.setEnable(false);
+       // txtinputPassword.setEnable(false);
 
         VtitanTextInputLayoutSpinner spinner=findViewById(R.id.spinner);
         spinner.setSpinnerAdapter(datasets);

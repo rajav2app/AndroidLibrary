@@ -75,6 +75,7 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
         setHelperText(helperText);
         setBackground(background);
         setMaxLength(maxLength);
+        textInputPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
         //setEndIconMode(endiconMode);
        // setEndIcon(endIconDrawable);
        // setStartIcon(startIconDrawable);
@@ -119,7 +120,9 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
         etPassword.setEnabled(enable);
         if(!enable){
             textInputPassword.setBoxBackgroundColor(mContext.getColor(R.color.disable));
+            textInputPassword.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
         }else{
+            textInputPassword.setEndIconMode(TextInputLayout.END_ICON_PASSWORD_TOGGLE);
             textInputPassword.setBoxBackgroundColor(mContext.getColor(R.color.black));
         }
     }

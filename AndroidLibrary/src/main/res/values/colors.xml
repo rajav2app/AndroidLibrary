@@ -68,7 +68,6 @@
     <color name="n_white">#ffffff</color>
     <color name="n_black">#000000</color>
 
-    <color name="grid_line_color">#f1cadb</color>
-    <color name="limit_line_color">#e04e8d</color>
+    <color name="disable">#ECECEC</color>
 
 </resources>

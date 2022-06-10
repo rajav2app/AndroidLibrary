@@ -7,30 +7,107 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.example.androidlibrary.customviews.vSearchView
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.androidlibrary.customviews.VtitanTextInputLayout
+            android:id="@+id/txtInputSSID"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:textColor="@color/textViewColor">
+        </com.example.androidlibrary.customviews.VtitanTextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:id="@+id/btn_edit"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/btn_color"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_edit_24" />
+
+            <ImageButton
+                android:id="@+id/btn_save"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:backgroundTint="@color/btn_color"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_check_black_24dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <com.example.androidlibrary.customviews.VtitanSearchView
         android:id="@+id/llSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </com.example.androidlibrary.customviews.vSearchView>
+    </com.example.androidlibrary.customviews.VtitanSearchView>
 
-    <com.example.androidlibrary.customviews.vTextInputLayout
-        android:id="@+id/txtinput"
+    <com.example.androidlibrary.customviews.VtitanTextInputLayout
+        android:id="@+id/txtUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:textColor="@color/textViewColor">
+    </com.example.androidlibrary.customviews.VtitanTextInputLayout>
+
+    <com.example.androidlibrary.customviews.VtitanTextInputLayoutPassword
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.example.androidlibrary.customviews.vTextInputLayout>
 
-    <com.example.androidlibrary.customviews.vTextInputLayout
-        android:id="@+id/txtinputPassword"
+    </com.example.androidlibrary.customviews.VtitanTextInputLayoutPassword>
+
+ <com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </com.example.androidlibrary.customviews.vTextInputLayout>
+    </com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner>
+
+      <com.example.androidlibrary.customviews.VtitanRadioButton
+          android:id="@+id/rb1"
+          android:layout_width="50dp"
+          android:layout_height="50dp">
+
+      </com.example.androidlibrary.customviews.VtitanRadioButton>
+      <com.example.androidlibrary.customviews.VtitanRadioButton
+          android:id="@+id/rb2"
+          android:layout_width="50dp"
+          android:layout_height="50dp">
+      </com.example.androidlibrary.customviews.VtitanRadioButton>
+
 
     <Button
         android:id="@+id/btn_submit"
+        android:backgroundTint="@color/btn_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
+        android:textColor="@color/tool_bar_text"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_Mode"
+        android:backgroundTint="@color/btn_color"
+        android:textColor="@color/tool_bar_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Mode"
         android:layout_gravity="center"
         android:gravity="center"/>
 

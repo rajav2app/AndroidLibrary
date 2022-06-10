@@ -1,10 +1,14 @@
 package com.example.androidlibrary.customviews;
 
+import static com.google.android.material.textfield.TextInputLayout.END_ICON_CLEAR_TEXT;
+
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
@@ -16,29 +20,67 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidlibrary.adapter.CustomAdapter;
 import com.example.androidlibrary.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class vSearchView extends LinearLayout  {
-     private RecyclerView rv_free_device;
-     private CustomAdapter customAdapter;
-     private Context mContext;
-     private TextView txt_noData;
-     private ProgressBar loading;
-     private SearchView searchView;
-     private List<String >filterNameList=new ArrayList<>();
-    public vSearchView(Context context, @Nullable AttributeSet attrs) {
+public class VtitanSearchView extends LinearLayout  {
+    private TextInputLayout textInputSearch;
+    private AutoCompleteTextView autoCompleteTextView;
+    private Context mContext;
+    public VtitanSearchView(Context context) {
+        super(context);
+
+    }
+    public VtitanSearchView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.vsearchview, this,true);
         findViewsById(view);
-        setupRecyclerView();
+      //  setupRecyclerView();
+        textInputSearch.setEndIconMode(END_ICON_CLEAR_TEXT);
 
     }
+
     private void findViewsById(View view) {
+        textInputSearch = (TextInputLayout) view.findViewById(R.id.textInputSpinner);
+        autoCompleteTextView=(AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
+    }
+
+    public void setSpinnerAdapter(List<String> itemList){
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>(
+                        mContext,
+                        R.layout.spinner_item,
+                        itemList);
+
+        autoCompleteTextView.setAdapter(adapter);
+    }
+
+    public CharSequence getText() {
+        return autoCompleteTextView.getText();
+    }
+
+    public void setText(CharSequence value) {
+        autoCompleteTextView.setText(value);
+    }
+
+    public void setHint(CharSequence value){
+        textInputSearch.setHint(value);
+    }
+
+    public void setenable(boolean enable){
+        autoCompleteTextView.setEnabled(enable);
+        if(!enable){
+            textInputSearch.setBoxBackgroundColor(mContext.getColor(R.color.disable));
+        }else{
+            textInputSearch.setBoxBackgroundColor(mContext.getColor(R.color.black));
+        }
+    }
+    /*private void findViewsById(View view) {
         rv_free_device = (RecyclerView) view.findViewById(R.id.rv_free_device);
         txt_noData=(TextView)view.findViewById(R.id.txt_noData);
         searchView=(SearchView)view.findViewById(R.id.searchView);
@@ -112,5 +154,5 @@ public class vSearchView extends LinearLayout  {
         }
 
 
-    };
+    };*/
 }

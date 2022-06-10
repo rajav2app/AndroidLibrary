@@ -64,11 +64,9 @@
     <color name="icon_color">#FFFFFF</color>
 
     <!--new ui -->
-    <color name="n_white">#000000</color>
-    <color name="n_black">#ffffff</color>
     <color name="half_black">#808080</color>
     <color name="dash_rate">#808080</color>
     <color name="dash_rateunit">#006089</color>
-
-    <color name="disable">#697479</color>
+    <color name="n_white">#000000</color>
+    <color name="n_black">#ffffff</color>
 </resources>

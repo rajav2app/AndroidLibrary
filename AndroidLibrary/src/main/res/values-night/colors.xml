@@ -71,4 +71,7 @@
     <color name="dash_rateunit">#006089</color>
 
     <color name="disable">#697479</color>
+
+    <color name="grid_line_color">#f1cadb</color>
+    <color name="limit_line_color">#e04e8d</color>
 </resources>

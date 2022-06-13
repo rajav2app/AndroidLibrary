@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:textSize="16sp"
+                android:padding="8dp"
                 android:textColor="@color/textViewColor"/>
 
         </com.google.android.material.textfield.TextInputLayout>

@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
         VtitanSearchView search=findViewById(R.id.llSearch);
         search.setSpinnerAdapter(datasets);
         search.setHint("Select Name");
+        //search.setEndIcon(R.drawable.ic_search);
+        //search.setEndIconMode(2);
 
         final ImageButton btn_edit=findViewById(R.id.btn_edit);
         final ImageButton btn_save=findViewById(R.id.btn_save);

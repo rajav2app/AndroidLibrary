@@ -130,7 +130,7 @@ public class VtitanSearchView extends LinearLayout  {
         autoCompleteTextView=(AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
     }
 
-    public void setSpinnerAdapter(List<String> itemList){
+    public void setAdapter(List<String> itemList){
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(
                         mContext,

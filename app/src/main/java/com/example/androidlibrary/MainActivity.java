@@ -3,13 +3,16 @@ package com.example.androidlibrary;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.androidlibrary.app.MyApplication;
+import com.example.androidlibrary.customviews.VtitanAutoCompleteTextView;
 import com.example.androidlibrary.customviews.VtitanRadioButton;
 import com.example.androidlibrary.customviews.VtitanSearchView;
 import com.example.androidlibrary.customviews.VtitanTextInputLayout;
@@ -19,7 +22,7 @@ import com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements VtitanTextInputLayout.OnEndIconClickListener, VtitanTextInputLayout.OnStartIconClickListener {
+public class MainActivity extends AppCompatActivity implements VtitanTextInputLayout.OnEndIconClickListener, VtitanTextInputLayout.OnStartIconClickListener,VtitanAutoCompleteTextView.OnTextChangeListener {
     List<String> datasets=new ArrayList<>();
 
     @Override
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
         Button btn_submit=findViewById(R.id.btn_submit);
         Button btn_Mode=findViewById(R.id.btn_Mode);
         final SessionManager sessionManager=new SessionManager(this);
-
+        addDatas();
         VtitanTextInputLayout textInputLayout=findViewById(R.id.txtInputSSID);
         textInputLayout.setHint("Hospital SSID");
         textInputLayout.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -53,11 +56,17 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
         spinner.setHint("Select Name");
 
         VtitanSearchView search=findViewById(R.id.llSearch);
-        search.setSpinnerAdapter(datasets);
+        search.setAdapter(datasets);
         search.setHint("Select Name");
         //search.setEndIcon(R.drawable.ic_search);
         //search.setEndIconMode(2);
-
+        VtitanAutoCompleteTextView autoCompleteTextView=findViewById(R.id.autoCompleteTextview);
+        autoCompleteTextView.setAdapter(datasets);
+        autoCompleteTextView.setOnEditTextChangeListener(this);
+        autoCompleteTextView.setHint(getString(R.string.device_name));
+        //autoCompleteTextView.setFilter(7);
+       // autoCompleteTextView.setThreshHold(3);
+       // autoCompleteTextView.addTextChangeListerner();
         final ImageButton btn_edit=findViewById(R.id.btn_edit);
         final ImageButton btn_save=findViewById(R.id.btn_save);
         textInputLayout.setEnable(false);
@@ -98,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
             rb2.setChecked(false);
         }
 
-        addDatas();
+
        // LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
        /* llSearch.setAdapter(new CustomAdapter(new CustomAdapter.FreeDeviceListener() {
             @Override
@@ -175,4 +184,34 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
     public void onStartIconClickListener() {
 
     }
+
+    @Override
+    public void vbeforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void vonTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void vafterTextChanged(Editable s) {
+        Log.i("TextListener_r",s.toString().trim());
+    }
+
+  /*  @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        Log.i("TextListener",s.toString().trim());
+    }*/
 }

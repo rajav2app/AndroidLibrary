@@ -8,10 +8,14 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
@@ -19,11 +23,12 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.example.androidlibrary.R;
+import com.google.android.material.internal.TextWatcherAdapter;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
-public class vAutoCompleteTextView extends LinearLayout {
+public class VtitanAutoCompleteTextView extends LinearLayout {
 
     private TextInputLayout textInputSearch;
     private AutoCompleteTextView autoCompleteTextView;
@@ -46,14 +51,23 @@ public class vAutoCompleteTextView extends LinearLayout {
     public interface OnStartIconClickListener{
         void onStartIconClickListener();
     }
-    private VtitanTextInputLayout.OnStartIconClickListener mOnStartIconClickListener;
-    private VtitanTextInputLayout.OnEndIconClickListener mOnEndIconClickListener;
-
-    public vAutoCompleteTextView(Context context) {
+    public interface OnItemClickListener{
+        void onItemClicked(int clickedPos);
+    }
+    public interface OnTextChangeListener{
+        void vbeforeTextChanged(CharSequence s, int start, int count, int after);
+        void vonTextChanged(CharSequence s, int start, int before, int count);
+        void vafterTextChanged(Editable s);
+     }
+    private OnStartIconClickListener mOnStartIconClickListener;
+    private OnEndIconClickListener mOnEndIconClickListener;
+    private OnItemClickListener onItemClickListener;
+    private OnTextChangeListener onTextChangeListener;
+    public VtitanAutoCompleteTextView(Context context) {
         super(context);
     }
 
-    public vAutoCompleteTextView(Context context, @Nullable AttributeSet attrs) {
+    public VtitanAutoCompleteTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
 
@@ -113,11 +127,43 @@ public class vAutoCompleteTextView extends LinearLayout {
             });
         }
 
+        if(autoCompleteTextView.getAdapter()!=null){
+            autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    onItemClickListener.onItemClicked(i);
+                }
+            });
+        }
+
+        if(onTextChangeListener!=null) {
+            autoCompleteTextView.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    onTextChangeListener.vbeforeTextChanged(charSequence, i, i1, i2);
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    onTextChangeListener.vonTextChanged(charSequence, i, i1, i2);
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    onTextChangeListener.vafterTextChanged(editable);
+
+                }
+            });
+        }
 
     }
 
-    public vAutoCompleteTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public VtitanAutoCompleteTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    public void setOnEditTextChangeListener(OnTextChangeListener textChangeListener){
+        onTextChangeListener = textChangeListener;
     }
 
     private void findViewsById(View view) {
@@ -125,7 +171,8 @@ public class vAutoCompleteTextView extends LinearLayout {
         autoCompleteTextView=(AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
     }
 
-    public void setSpinnerAdapter(List<String> itemList){
+    public void setAdapter(List<String> itemList){
+        Log.i("LISTITEMS",itemList.toString());
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(
                         mContext,
@@ -133,8 +180,16 @@ public class vAutoCompleteTextView extends LinearLayout {
                         itemList);
 
         autoCompleteTextView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
-
+    public void setFilter(int maxLength){
+        InputFilter pidpFilter = new InputFilter.AllCaps();
+        autoCompleteTextView.setFilters(new InputFilter[] {
+                new InputFilter.LengthFilter(maxLength), pidpFilter});
+    }
+    public void setThreshHold(int threshold){
+        autoCompleteTextView.setThreshold(threshold);
+    }
 
     public void setenable(boolean enable){
         autoCompleteTextView.setEnabled(enable);
@@ -145,12 +200,16 @@ public class vAutoCompleteTextView extends LinearLayout {
         }
     }
 
-    public void setOnEndIconClickListener(VtitanTextInputLayout.OnEndIconClickListener onEndIconClickListener){
+    public void setOnEndIconClickListener(OnEndIconClickListener onEndIconClickListener){
         mOnEndIconClickListener = onEndIconClickListener;
     }
-    public void setOnStartIconClickListener(VtitanTextInputLayout.OnStartIconClickListener onStartIconClickListener){
+    public void setOnStartIconClickListener(OnStartIconClickListener onStartIconClickListener){
         mOnStartIconClickListener=onStartIconClickListener;
     }
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        onItemClickListener=onItemClickListener;
+    }
+
     public CharSequence getText() {
         return autoCompleteTextView.getText();
     }
@@ -160,6 +219,9 @@ public class vAutoCompleteTextView extends LinearLayout {
 
     }
 
+    public void setError(String resourse){
+        autoCompleteTextView.setError(resourse);
+    }
 
     public void setHint(CharSequence value){
         textInputSearch.setHint(value);

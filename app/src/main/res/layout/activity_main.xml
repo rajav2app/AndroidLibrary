@@ -90,7 +90,12 @@
           android:layout_height="50dp">
       </com.example.androidlibrary.customviews.VtitanRadioButton>
 
+<com.example.androidlibrary.customviews.VtitanAutoCompleteTextView
+   android:id="@+id/autoCompleteTextview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+</com.example.androidlibrary.customviews.VtitanAutoCompleteTextView>
     <Button
         android:id="@+id/btn_submit"
         android:backgroundTint="@color/btn_color"

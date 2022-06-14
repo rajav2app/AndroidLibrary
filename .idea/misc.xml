@@ -10,8 +10,10 @@
         <entry key="AndroidLibrary/src/main/res/layout/recyclerview.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/recyclerview_item.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/searchbar.xml" value="0.1" />
+        <entry key="AndroidLibrary/src/main/res/layout/vautocompletetextview.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/vsearchview.xml" value="0.1" />
         <entry key="AndroidLibrary/src/main/res/layout/vtextinputlayout.xml" value="0.1" />
+        <entry key="AndroidLibrary/src/main/res/layout/vtextinputlayoutspinner.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_new_component.xml" value="0.1" />
       </map>

@@ -34,14 +34,14 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class vECGChart extends LinearLayout {
+public class VtitanECGChart extends LinearLayout {
     private Context mContext;
     private LineChart mChart;
-    public vECGChart(Context context) {
+    public VtitanECGChart(Context context) {
         super(context);
     }
 
-    public vECGChart(Context context, @Nullable AttributeSet attrs) {
+    public VtitanECGChart(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
@@ -50,7 +50,7 @@ public class vECGChart extends LinearLayout {
         findViewsById(view);
     }
 
-    public vECGChart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public VtitanECGChart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

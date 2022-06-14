@@ -21,15 +21,15 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.List;
 
-public class vLiveChart extends LinearLayout {
+public class VtitanLiveChart extends LinearLayout {
     private Context mContext;
     private LineChart mChart;
     private Thread thread;
-    public vLiveChart(Context context) {
+    public VtitanLiveChart(Context context) {
         super(context);
     }
 
-    public vLiveChart(Context context, @Nullable AttributeSet attrs) {
+    public VtitanLiveChart(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
@@ -38,7 +38,7 @@ public class vLiveChart extends LinearLayout {
         findViewsById(view);
     }
 
-    public vLiveChart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public VtitanLiveChart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

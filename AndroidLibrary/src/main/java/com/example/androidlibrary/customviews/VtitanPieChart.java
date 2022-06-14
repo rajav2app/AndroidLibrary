@@ -21,14 +21,14 @@ import com.github.mikephil.charting.utils.MPPointF;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vPieChart extends LinearLayout implements DeviceStatusTask.DeviceStatusTaskCallback{
+public class VtitanPieChart extends LinearLayout implements DeviceStatusTask.DeviceStatusTaskCallback{
     private Context mContext;
     private PieChart mChart;
-    public vPieChart(Context context) {
+    public VtitanPieChart(Context context) {
         super(context);
     }
 
-    public vPieChart(Context context, @Nullable AttributeSet attrs) {
+    public VtitanPieChart(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext=context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
@@ -37,7 +37,7 @@ public class vPieChart extends LinearLayout implements DeviceStatusTask.DeviceSt
         findViewsById(view);
     }
 
-    public vPieChart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public VtitanPieChart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

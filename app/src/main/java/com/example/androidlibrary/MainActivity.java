@@ -8,10 +8,14 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.androidlibrary.app.MyApplication;
+import com.example.androidlibrary.customviews.DebouncedOnClickListener;
 import com.example.androidlibrary.customviews.VtitanAutoCompleteTextView;
 import com.example.androidlibrary.customviews.VtitanRadioButton;
 import com.example.androidlibrary.customviews.VtitanSearchView;
@@ -22,7 +26,7 @@ import com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements VtitanTextInputLayout.OnEndIconClickListener, VtitanTextInputLayout.OnStartIconClickListener,VtitanAutoCompleteTextView.OnTextChangeListener {
+public class MainActivity extends AppCompatActivity  {
     List<String> datasets=new ArrayList<>();
 
     @Override
@@ -43,8 +47,6 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
         txtUserName.setHint("User Name");
         //txtUserName.setEndIcon(getDrawable(R.drawable.ic_search));
         //txtUserName.setMaxLength(10);
-        txtUserName.setOnEndIconClickListener(this::onEndIconClickListener);
-        txtUserName.setOnStartIconClickListener(this::onStartIconClickListener);
         VtitanTextInputLayoutPassword txtinputPassword=findViewById(R.id.password);
         txtinputPassword.setHint("Wifi-Password");
 
@@ -62,8 +64,38 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
         //search.setEndIconMode(2);
         VtitanAutoCompleteTextView autoCompleteTextView=findViewById(R.id.autoCompleteTextview);
         autoCompleteTextView.setAdapter(datasets);
-        autoCompleteTextView.setOnEditTextChangeListener(this);
         autoCompleteTextView.setHint(getString(R.string.device_name));
+
+        autoCompleteTextView.setOnEditTextChangeListener(new VtitanAutoCompleteTextView.OnTextChangeListener() {
+            @Override
+            public void vbeforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void vonTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void vafterTextChanged(Editable s) {
+                Log.i("TextListener_test",s.toString().trim());
+            }
+        });
+        autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        autoCompleteTextView.setImeOption(EditorInfo.IME_ACTION_DONE);
+        autoCompleteTextView.setOnFocusChangeListener(new VtitanAutoCompleteTextView.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.i("FOCUS","CHANGED");
+            }
+        });
+        autoCompleteTextView.setOnItemClickListener(new VtitanAutoCompleteTextView.OnItemClickListener() {
+            @Override
+            public void onItemClicked(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("OnItemCLICK",""+adapterView.getItemAtPosition(i));
+            }
+        });
         //autoCompleteTextView.setFilter(7);
        // autoCompleteTextView.setThreshHold(3);
        // autoCompleteTextView.addTextChangeListerner();
@@ -133,14 +165,22 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
        //SearchView searchView= llSearch.findViewById(R.id.searchView);
         //String text=llSearch.getQueryText();
 
-        btn_submit.setOnClickListener(new View.OnClickListener() {
+        btn_submit.setOnClickListener(new DebouncedOnClickListener(DebouncedOnClickListener.CLICK_INT) {
+            @Override
+            public void onDebouncedClick(View v) {
+                Log.i("RESULT",textInputLayout.getText().toString());
+                Log.i("RESULT",txtinputPassword.getText().toString());
+            }
+        });
+
+        /*btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i("RESULT",textInputLayout.getText().toString());
                 Log.i("RESULT",txtinputPassword.getText().toString());
 
             }
-        });
+        });*/
 
         btn_Mode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,44 +214,4 @@ public class MainActivity extends AppCompatActivity implements VtitanTextInputLa
         datasets.add("Muthukumar");
         datasets.add("Subarayan");
     }
-
-    @Override
-    public void onEndIconClickListener() {
-        Log.i("RESULT","EndIconClicked");
-    }
-
-    @Override
-    public void onStartIconClickListener() {
-
-    }
-
-    @Override
-    public void vbeforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void vonTextChanged(CharSequence s, int start, int before, int count) {
-
-    }
-
-    @Override
-    public void vafterTextChanged(Editable s) {
-        Log.i("TextListener_r",s.toString().trim());
-    }
-
-  /*  @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        Log.i("TextListener",s.toString().trim());
-    }*/
 }

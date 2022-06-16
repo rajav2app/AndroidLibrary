@@ -12,5 +12,7 @@
         <attr name="rightDrawable" format="reference"/>
         <attr name="leftDrawable" format="reference"/>
         <attr name="rightIconMode" format="integer" />
+        <attr name="android:imeOptions"/>
+        <attr name="android:inputType"/>
     </declare-styleable>
 </resources>

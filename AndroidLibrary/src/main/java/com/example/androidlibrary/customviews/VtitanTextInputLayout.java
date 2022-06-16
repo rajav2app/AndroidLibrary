@@ -14,10 +14,12 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -53,9 +55,18 @@ public class VtitanTextInputLayout extends LinearLayout {
     public interface OnStartIconClickListener{
         void onStartIconClickListener();
     }
+    public interface OnTextChangeListener{
+        void vbeforeTextChanged(CharSequence s, int start, int count, int after);
+        void vonTextChanged(CharSequence s, int start, int before, int count);
+        void vafterTextChanged(Editable s);
+    }
+    public interface OnFocusChangeListener{
+        void onFocusChange(View v, boolean hasFocus);
+    }
     private OnStartIconClickListener mOnStartIconClickListener;
     private OnEndIconClickListener mOnEndIconClickListener;
-
+    private OnTextChangeListener mOnTextChangeListener;
+    private OnFocusChangeListener mOnFocusChangeListener;
     public VtitanTextInputLayout(Context context) {
         super(context);
     }
@@ -116,6 +127,37 @@ public class VtitanTextInputLayout extends LinearLayout {
                 }
             });
         }
+          if(mOnTextChangeListener!=null) {
+              textInputEditText.addTextChangedListener(new TextWatcher() {
+                  @Override
+                  public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                      mOnTextChangeListener.vbeforeTextChanged(charSequence, i, i1, i2);
+                  }
+
+                  @Override
+                  public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                      mOnTextChangeListener.vonTextChanged(charSequence, i, i1, i2);
+                  }
+
+                  @Override
+                  public void afterTextChanged(Editable editable) {
+                      mOnTextChangeListener.vafterTextChanged(editable);
+
+                  }
+              });
+          }
+        if(mOnFocusChangeListener!=null) {
+            textInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean b) {
+                    if (!b) {
+                        mOnFocusChangeListener.onFocusChange(view, b);
+                    }
+
+                }
+            });
+        }
+
 
     }
     public VtitanTextInputLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -127,6 +169,14 @@ public class VtitanTextInputLayout extends LinearLayout {
     }
     public void setOnStartIconClickListener(OnStartIconClickListener onStartIconClickListener){
         mOnStartIconClickListener=onStartIconClickListener;
+    }
+
+    public void setOnEditTextChangeListener(OnTextChangeListener textChangeListener){
+        mOnTextChangeListener = textChangeListener;
+    }
+
+    public void setOnFocusChangeListener(OnFocusChangeListener focusChangeListener){
+        mOnFocusChangeListener=focusChangeListener;
     }
     private void findViewsById(View view) {
         textInput = (TextInputLayout) view.findViewById(R.id.textInput);
@@ -208,6 +258,10 @@ public class VtitanTextInputLayout extends LinearLayout {
     }
     private void setStartIcon(Drawable drawable){
         textInput.setStartIconDrawable(drawable);
+    }
+
+    public void setImeOption(int imeOption){
+        textInputEditText.setImeOptions(imeOption);
     }
     private void redrawLayout() {
         view.setDrawingCacheEnabled(true);

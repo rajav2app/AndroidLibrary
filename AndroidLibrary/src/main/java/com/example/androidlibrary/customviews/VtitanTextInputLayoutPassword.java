@@ -50,7 +50,7 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
         try {
             textColour = a.getColor(R.styleable.VtitanTextInputLayout_textColor, getResources().getColor(R.color.textViewColor));
             backgroundColour=a.getColor(R.styleable.VtitanTextInputLayout_backgroundColour, 0);
-            textSize=a.getDimensionPixelSize(R.styleable.VtitanTextInputLayout_textSize,16);
+            textSize=a.getDimensionPixelSize(R.styleable.VtitanTextInputLayout_textSize,14);
             hint=a.getString(R.styleable.VtitanTextInputLayout_hint);
             helperText=a.getString(R.styleable.VtitanTextInputLayout_helperText);
             hintTextColor=a.getColor(R.styleable.VtitanTextInputLayout_hintTextColor,getResources().getColor(R.color.half_black));
@@ -168,6 +168,9 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
     }
     private void setStartIcon(Drawable drawable){
         textInputPassword.setStartIconDrawable(drawable);
+    }
+    public void setError(String resourse){
+        etPassword.setError(resourse);
     }
 
 

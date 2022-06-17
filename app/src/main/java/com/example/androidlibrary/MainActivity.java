@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity  {
                 Log.i("TextListener_test",s.toString().trim());
             }
         });
+        autoCompleteTextView.setText("");
         autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
         autoCompleteTextView.setImeOption(EditorInfo.IME_ACTION_DONE);
         autoCompleteTextView.setOnFocusChangeListener(new VtitanAutoCompleteTextView.OnFocusChangeListener() {
@@ -96,8 +97,8 @@ public class MainActivity extends AppCompatActivity  {
                 Log.i("OnItemCLICK",""+adapterView.getItemAtPosition(i));
             }
         });
-        //autoCompleteTextView.setFilter(7);
-       // autoCompleteTextView.setThreshHold(3);
+        autoCompleteTextView.setFilter(10);
+        autoCompleteTextView.setThreshHold(3);
        // autoCompleteTextView.addTextChangeListerner();
         final ImageButton btn_edit=findViewById(R.id.btn_edit);
         final ImageButton btn_save=findViewById(R.id.btn_save);

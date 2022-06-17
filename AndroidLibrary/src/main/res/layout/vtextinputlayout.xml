@@ -28,7 +28,7 @@
             android:hint=""
             android:inputType="text"
             android:textSize="15sp"
-            android:saveEnabled="false"
+            android:padding="8dp"
             android:textColor="@color/textViewColor"/>
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -84,7 +84,7 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         try {
             textColour = a.getColor(R.styleable.VtitanTextInputLayout_textColor, getResources().getColor(R.color.textViewColor));
             backgroundColour=a.getColor(R.styleable.VtitanTextInputLayout_backgroundColour, 0);
-            textSize=a.getDimensionPixelSize(R.styleable.VtitanTextInputLayout_textSize,16);
+            textSize=a.getDimensionPixelSize(R.styleable.VtitanTextInputLayout_textSize,14);
             hint=a.getString(R.styleable.VtitanTextInputLayout_hint);
             helperText=a.getString(R.styleable.VtitanTextInputLayout_helperText);
             hintTextColor=a.getColor(R.styleable.VtitanTextInputLayout_hintTextColor,getResources().getColor(R.color.half_black));
@@ -201,10 +201,9 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         autoCompleteTextView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-    public void setFilter(int maxLength){
-        InputFilter pidpFilter = new InputFilter.AllCaps();
-        autoCompleteTextView.setFilters(new InputFilter[] {
-                new InputFilter.LengthFilter(maxLength), pidpFilter});
+    public void setFilter(int filteValue){
+        Log.i("LISTITEMS",""+filteValue);
+        autoCompleteTextView.setFilters(new InputFilter[] {new InputFilter.LengthFilter(filteValue) , new InputFilter.AllCaps()});
     }
     public void setThreshHold(int threshold){
         autoCompleteTextView.setThreshold(threshold);
@@ -240,6 +239,10 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
 
     public void setError(String resourse){
         autoCompleteTextView.setError(resourse);
+    }
+
+    public void setSelection(int position){
+        autoCompleteTextView.setSelection(position);
     }
 
     public void setHint(CharSequence value){

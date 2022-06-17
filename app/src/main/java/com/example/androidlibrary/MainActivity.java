@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity  {
         autoCompleteTextView.setAdapter(datasets);
         autoCompleteTextView.setHint(getString(R.string.device_name));
 
-        autoCompleteTextView.setOnEditTextChangeListener(new VtitanAutoCompleteTextView.OnTextChangeListener() {
+      /*  autoCompleteTextView.setOnEditTextChangeListener(new VtitanAutoCompleteTextView.OnTextChangeListener() {
             @Override
             public void vbeforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -81,25 +81,26 @@ public class MainActivity extends AppCompatActivity  {
             public void vafterTextChanged(Editable s) {
                 Log.i("TextListener_test",s.toString().trim());
             }
-        });
+        });*/
         autoCompleteTextView.setText("");
         autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
         autoCompleteTextView.setImeOption(EditorInfo.IME_ACTION_DONE);
-        autoCompleteTextView.setOnFocusChangeListener(new VtitanAutoCompleteTextView.OnFocusChangeListener() {
+       /* autoCompleteTextView.setOnItemClickListener(new VtitanAutoCompleteTextView.OnItemClickListener() {
+            @Override
+            public void onItemClicked(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("OnItemCLICK",""+adapterView.getItemAtPosition(i));
+            }
+        });*/
+
+      autoCompleteTextView.setOnFocusChangeListener(new VtitanAutoCompleteTextView.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.i("FOCUS","CHANGED");
             }
         });
-        autoCompleteTextView.setOnItemClickListener(new VtitanAutoCompleteTextView.OnItemClickListener() {
-            @Override
-            public void onItemClicked(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("OnItemCLICK",""+adapterView.getItemAtPosition(i));
-            }
-        });
         autoCompleteTextView.setFilter(10);
         autoCompleteTextView.setThreshHold(3);
-       // autoCompleteTextView.addTextChangeListerner();
+        // autoCompleteTextView.addTextChangeListerner();
         final ImageButton btn_edit=findViewById(R.id.btn_edit);
         final ImageButton btn_save=findViewById(R.id.btn_save);
         textInputLayout.setEnable(false);

@@ -127,36 +127,41 @@ public class VtitanTextInputLayout extends LinearLayout {
                 }
             });
         }
-          if(mOnTextChangeListener!=null) {
+
               textInputEditText.addTextChangedListener(new TextWatcher() {
                   @Override
                   public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                      mOnTextChangeListener.vbeforeTextChanged(charSequence, i, i1, i2);
+                      if(mOnTextChangeListener!=null) {
+                          mOnTextChangeListener.vbeforeTextChanged(charSequence, i, i1, i2);
+                      }
                   }
 
                   @Override
                   public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                      mOnTextChangeListener.vonTextChanged(charSequence, i, i1, i2);
+                     if(mOnTextChangeListener!=null) {
+                         mOnTextChangeListener.vonTextChanged(charSequence, i, i1, i2);
+                     }
                   }
 
                   @Override
                   public void afterTextChanged(Editable editable) {
-                      mOnTextChangeListener.vafterTextChanged(editable);
-
+                      if(mOnTextChangeListener!=null) {
+                          mOnTextChangeListener.vafterTextChanged(editable);
+                      }
                   }
               });
-          }
-        if(mOnFocusChangeListener!=null) {
+
+
             textInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View view, boolean b) {
-                    if (!b) {
+                    if(mOnFocusChangeListener!=null) {
                         mOnFocusChangeListener.onFocusChange(view, b);
                     }
 
                 }
             });
-        }
+
 
 
     }

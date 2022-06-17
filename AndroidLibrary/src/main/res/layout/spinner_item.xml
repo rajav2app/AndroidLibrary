@@ -9,4 +9,4 @@
     android:textColor="@color/textViewColor"
     android:layout_marginStart="5dp"
     android:layout_marginEnd="5dp"
-    android:textSize="@dimen/text_size_20sp" />
+    android:textSize="@dimen/text_size_15sp" />

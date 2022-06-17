@@ -134,42 +134,51 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
                 }
             });
         }
-         if(mOnItemClickListener!=null) {
+
              autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                  @Override
                  public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                     mOnItemClickListener.onItemClicked(adapterView, view, i, l);
+                    if(mOnItemClickListener!=null) {
+                        mOnItemClickListener.onItemClicked(adapterView, view, i, l);
+                    }
                  }
              });
-         }
-            if(mOnTextChangeListener!=null){
+
+
              autoCompleteTextView.addTextChangedListener(new TextWatcher() {
                  @Override
                  public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                     mOnTextChangeListener.vbeforeTextChanged(charSequence, i, i1, i2);
+                     if(mOnTextChangeListener!=null) {
+                         mOnTextChangeListener.vbeforeTextChanged(charSequence, i, i1, i2);
+                     }
                  }
 
                  @Override
                  public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                     mOnTextChangeListener.vonTextChanged(charSequence, i, i1, i2);
+                     if(mOnTextChangeListener!=null) {
+                         mOnTextChangeListener.vonTextChanged(charSequence, i, i1, i2);
+                     }
                  }
 
                  @Override
                  public void afterTextChanged(Editable editable) {
-                     mOnTextChangeListener.vafterTextChanged(editable);
+                     if(mOnTextChangeListener!=null) {
+                         mOnTextChangeListener.vafterTextChanged(editable);
+                     }
 
                  }
              });
-         }
-         if(mOnFocusChangeListener!=null) {
+
+
              autoCompleteTextView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                  @Override
                  public void onFocusChange(View view, boolean b) {
-                     mOnFocusChangeListener.onFocusChange(view, b);
-
+                     if(mOnFocusChangeListener!=null){
+                         mOnFocusChangeListener.onFocusChange(view, b);
+                     }
                  }
              });
-         }
+
 
     }
 
@@ -202,7 +211,7 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         adapter.notifyDataSetChanged();
     }
     public void setFilter(int filteValue){
-        Log.i("LISTITEMS",""+filteValue);
+        //Log.i("LISTITEMS",""+filteValue);
         autoCompleteTextView.setFilters(new InputFilter[] {new InputFilter.LengthFilter(filteValue) , new InputFilter.AllCaps()});
     }
     public void setThreshHold(int threshold){

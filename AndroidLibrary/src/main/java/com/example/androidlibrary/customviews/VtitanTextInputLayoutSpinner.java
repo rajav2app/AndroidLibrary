@@ -94,6 +94,7 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
                         itemList);
 
         autoCompleteTextView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     public void setenable(boolean enable){

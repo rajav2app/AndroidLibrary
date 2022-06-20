@@ -56,17 +56,17 @@ public class VtitanTextInputLayout extends LinearLayout {
         void onStartIconClickListener();
     }
     public interface OnTextChangeListener{
-        void vbeforeTextChanged(CharSequence s, int start, int count, int after);
-        void vonTextChanged(CharSequence s, int start, int before, int count);
-        void vafterTextChanged(Editable s);
+        void beforeTextChanged(CharSequence s, int start, int count, int after);
+        void onTextChanged(CharSequence s, int start, int before, int count);
+        void afterTextChanged(Editable s);
     }
-    public interface OnFocusChangeListener{
+    public interface TOnFocusChangeListener{
         void onFocusChange(View v, boolean hasFocus);
     }
     private OnStartIconClickListener mOnStartIconClickListener;
     private OnEndIconClickListener mOnEndIconClickListener;
     private OnTextChangeListener mOnTextChangeListener;
-    private OnFocusChangeListener mOnFocusChangeListener;
+    private TOnFocusChangeListener mOnFocusChangeListener;
     public VtitanTextInputLayout(Context context) {
         super(context);
     }
@@ -132,31 +132,31 @@ public class VtitanTextInputLayout extends LinearLayout {
                   @Override
                   public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                       if(mOnTextChangeListener!=null) {
-                          mOnTextChangeListener.vbeforeTextChanged(charSequence, i, i1, i2);
+                          mOnTextChangeListener.beforeTextChanged(charSequence, i, i1, i2);
                       }
                   }
 
                   @Override
                   public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                      if(mOnTextChangeListener!=null) {
-                         mOnTextChangeListener.vonTextChanged(charSequence, i, i1, i2);
+                         mOnTextChangeListener.onTextChanged(charSequence, i, i1, i2);
                      }
                   }
 
                   @Override
                   public void afterTextChanged(Editable editable) {
                       if(mOnTextChangeListener!=null) {
-                          mOnTextChangeListener.vafterTextChanged(editable);
+                          mOnTextChangeListener.afterTextChanged(editable);
                       }
                   }
               });
 
 
-            textInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        textInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View view, boolean b) {
                     if(mOnFocusChangeListener!=null) {
-                        mOnFocusChangeListener.onFocusChange(view, b);
+                     mOnFocusChangeListener.onFocusChange(view, b);
                     }
 
                 }
@@ -180,7 +180,7 @@ public class VtitanTextInputLayout extends LinearLayout {
         mOnTextChangeListener = textChangeListener;
     }
 
-    public void setOnFocusChangeListener(OnFocusChangeListener focusChangeListener){
+  public  void setOnFocusChangeListener(TOnFocusChangeListener focusChangeListener){
         mOnFocusChangeListener=focusChangeListener;
     }
     private void findViewsById(View view) {
@@ -194,6 +194,10 @@ public class VtitanTextInputLayout extends LinearLayout {
     public void setText(CharSequence value) {
         textInputEditText.setText(value);
         redrawLayout();
+    }
+
+    public void setFilter(int length){
+        textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(length)});
     }
 
 

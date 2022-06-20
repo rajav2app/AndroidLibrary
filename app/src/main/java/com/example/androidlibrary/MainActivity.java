@@ -22,6 +22,7 @@ import com.example.androidlibrary.customviews.VtitanSearchView;
 import com.example.androidlibrary.customviews.VtitanTextInputLayout;
 import com.example.androidlibrary.customviews.VtitanTextInputLayoutPassword;
 import com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity  {
 
         VtitanTextInputLayout txtUserName=findViewById(R.id.txtUserName);
         txtUserName.setHint("User Name");
+        txtUserName.setFilter(10);
+
         //txtUserName.setEndIcon(getDrawable(R.drawable.ic_search));
         //txtUserName.setMaxLength(10);
         VtitanTextInputLayoutPassword txtinputPassword=findViewById(R.id.password);
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity  {
         spinner.setSpinnerAdapter(datasets);
         spinner.setHint("Select Name");
 
+        TextInputEditText textInputEditText=findViewById(R.id.edtext);
+
         VtitanSearchView search=findViewById(R.id.llSearch);
         search.setAdapter(datasets);
         search.setHint("Select Name");
@@ -65,8 +70,9 @@ public class MainActivity extends AppCompatActivity  {
         VtitanAutoCompleteTextView autoCompleteTextView=findViewById(R.id.autoCompleteTextview);
         autoCompleteTextView.setAdapter(datasets);
         autoCompleteTextView.setHint(getString(R.string.device_name));
-
-      /*  autoCompleteTextView.setOnEditTextChangeListener(new VtitanAutoCompleteTextView.OnTextChangeListener() {
+        autoCompleteTextView.setDigits("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        autoCompleteTextView.setOnEditTextChangeListener(new VtitanAutoCompleteTextView.OnTextChangeListener() {
             @Override
             public void vbeforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -79,11 +85,14 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public void vafterTextChanged(Editable s) {
+                if(!s.toString().isEmpty()){
+                   txtUserName.setText(s.toString());
+                }
+                //txtUserName.setText(s.toString());}
                 Log.i("TextListener_test",s.toString().trim());
             }
-        });*/
-        autoCompleteTextView.setText("");
-        autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        });
+        //autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
         autoCompleteTextView.setImeOption(EditorInfo.IME_ACTION_DONE);
        /* autoCompleteTextView.setOnItemClickListener(new VtitanAutoCompleteTextView.OnItemClickListener() {
             @Override
@@ -95,21 +104,27 @@ public class MainActivity extends AppCompatActivity  {
       autoCompleteTextView.setOnFocusChangeListener(new VtitanAutoCompleteTextView.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.i("FOCUS","CHANGED");
+                if(!hasFocus){
+                    //txtUserName.setText("Raja");
+                }
+              //  Log.i("FOCUS","CHANGED");
             }
         });
+
         autoCompleteTextView.setFilter(10);
-        autoCompleteTextView.setThreshHold(3);
+       // autoCompleteTextView.setMaxLength(10);
+        //autoCompleteTextView.setThreshHold(3);
+
         // autoCompleteTextView.addTextChangeListerner();
         final ImageButton btn_edit=findViewById(R.id.btn_edit);
         final ImageButton btn_save=findViewById(R.id.btn_save);
         textInputLayout.setEnable(false);
-        spinner.setenable(false);
+        //spinner.setenable(true);
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 textInputLayout.setEnable(true);
-                spinner.setenable(true);
+                //spinner.setenable(true);
                 btn_edit.setVisibility(View.GONE);
                 btn_save.setVisibility(View.VISIBLE);
             }
@@ -119,11 +134,14 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 textInputLayout.setEnable(false);
-                spinner.setenable(false);
+               // spinner.setenable(false);
                 btn_edit.setVisibility(View.VISIBLE);
                 btn_save.setVisibility(View.GONE);
             }
         });
+
+
+/*
 
         VtitanRadioButton rb1=findViewById(R.id.rb1);
         VtitanRadioButton rb2=findViewById(R.id.rb2);
@@ -140,6 +158,7 @@ public class MainActivity extends AppCompatActivity  {
         }else {
             rb2.setChecked(false);
         }
+*/
 
 
        // LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

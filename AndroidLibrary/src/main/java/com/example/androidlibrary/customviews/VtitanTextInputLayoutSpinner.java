@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.text.InputFilter;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -72,9 +73,6 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
         setHelperText(helperText);
         setBackground(background);
         setMaxLength(maxLength);
-        setEndIconMode(endiconMode);
-        setEndIcon(endIconDrawable);
-        setStartIcon(startIconDrawable);
     }
 
     public VtitanTextInputLayoutSpinner(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -83,14 +81,15 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
 
     private void findViewsById(View view) {
         textInputSpinner = (TextInputLayout) view.findViewById(R.id.textInputSpinner);
-        autoCompleteTextView=(AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
+        autoCompleteTextView=(AutoCompleteTextView) view.findViewById(R.id.sAutoCompleteTextView);
     }
 
     public void setSpinnerAdapter(List<String> itemList){
+        Log.i("SPINNERLIST",itemList.toString());
         ArrayAdapter<String> adapter =
                    new ArrayAdapter<>(
                         mContext,
-                        R.layout.spinner_item,
+                        R.layout.spinner_item_new,
                         itemList);
 
         autoCompleteTextView.setAdapter(adapter);

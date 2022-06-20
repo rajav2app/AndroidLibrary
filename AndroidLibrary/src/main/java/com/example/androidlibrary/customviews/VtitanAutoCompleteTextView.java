@@ -48,6 +48,7 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
     private Drawable endIconDrawable;
     private Drawable startIconDrawable;
     private int endiconMode;
+    private ArrayAdapter<String> adapter;
     public interface OnEndIconClickListener{
         void onEndIconClickListener();
     }
@@ -98,7 +99,7 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         }
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.vsearchview, this,true);
+        View view = inflater.inflate(R.layout.vautocompletetextview, this,true);
         findViewsById(view);
         //  setupRecyclerView();
         //textInputSearch.setEndIconMode(END_ICON_CLEAR_TEXT);
@@ -109,7 +110,7 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         setHintTextColour(hintTextColor);
         setHelperText(helperText);
         setBackground(background);
-        setMaxLength(maxLength);
+       // setMaxLength(maxLength);
         setEndIconMode(endiconMode);
         setEndIcon(endIconDrawable);
         setStartIcon(startIconDrawable);
@@ -187,21 +188,21 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
     }
 
     public void setOnEditTextChangeListener(OnTextChangeListener textChangeListener){
-        mOnTextChangeListener = textChangeListener;
+        this.mOnTextChangeListener = textChangeListener;
     }
 
     public void setOnFocusChangeListener(OnFocusChangeListener focusChangeListener){
-        mOnFocusChangeListener=focusChangeListener;
+        this.mOnFocusChangeListener=focusChangeListener;
     }
 
     private void findViewsById(View view) {
-        textInputSearch = (TextInputLayout) view.findViewById(R.id.textInputSpinner);
+        textInputSearch = (TextInputLayout) view.findViewById(R.id.textInputAutoCompleteTextView);
         autoCompleteTextView=(AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
     }
 
     public void setAdapter(List<String> itemList){
         //Log.i("LISTITEMS",itemList.toString());
-        ArrayAdapter<String> adapter =
+         adapter =
                 new ArrayAdapter<>(
                         mContext,
                         R.layout.spinner_item,
@@ -210,10 +211,10 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         autoCompleteTextView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-    public void setFilter(int filteValue){
-        //Log.i("LISTITEMS",""+filteValue);
-        autoCompleteTextView.setFilters(new InputFilter[] {new InputFilter.LengthFilter(filteValue) , new InputFilter.AllCaps()});
+    public void setFilter(int length){
+        autoCompleteTextView.setFilters(new InputFilter[] {new InputFilter.LengthFilter(length),new InputFilter.AllCaps()});
     }
+
     public void setThreshHold(int threshold){
         autoCompleteTextView.setThreshold(threshold);
     }
@@ -228,13 +229,13 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
     }
 
     public void setOnEndIconClickListener(OnEndIconClickListener onEndIconClickListener){
-        mOnEndIconClickListener = onEndIconClickListener;
+        this.mOnEndIconClickListener = onEndIconClickListener;
     }
     public void setOnStartIconClickListener(OnStartIconClickListener onStartIconClickListener){
-        mOnStartIconClickListener=onStartIconClickListener;
+        this.mOnStartIconClickListener=onStartIconClickListener;
     }
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){
-        mOnItemClickListener=onItemClickListener;
+       this.mOnItemClickListener=onItemClickListener;
     }
 
     public CharSequence getText() {
@@ -287,11 +288,11 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
     public void setHelperText(CharSequence helperText){
         textInputSearch.setHelperText(helperText);
     }
-    public void setMaxLength(int length){
+   /* public void setMaxLength(int length){
         InputFilter[] FilterArray = new InputFilter[1];
         FilterArray[0] = new InputFilter.LengthFilter(length);
         autoCompleteTextView.setFilters(FilterArray);
-    }
+    }*/
     public void setEndIconMode(int endIconMode){
         textInputSearch.setEndIconMode(endIconMode);
     }

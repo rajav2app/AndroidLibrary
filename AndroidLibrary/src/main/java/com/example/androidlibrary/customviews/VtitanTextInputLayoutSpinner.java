@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
@@ -35,6 +36,11 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
     private Drawable endIconDrawable;
     private Drawable startIconDrawable;
     private int endiconMode;
+    private ArrayAdapter<String> adapter;
+    private OnItemClickListener mOnItemClickListener;
+    public interface OnItemClickListener{
+        void onItemClicked(AdapterView<?> adapterView, View view, int i, long l);
+    }
     public VtitanTextInputLayoutSpinner(Context context) {
         super(context);
 
@@ -73,6 +79,15 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
         setHelperText(helperText);
         setBackground(background);
         setMaxLength(maxLength);
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(mOnItemClickListener!=null) {
+                    mOnItemClickListener.onItemClicked(adapterView, view, i, l);
+                }
+            }
+        });
     }
 
     public VtitanTextInputLayoutSpinner(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -86,8 +101,7 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
 
     public void setSpinnerAdapter(List<String> itemList){
         Log.i("SPINNERLIST",itemList.toString());
-        ArrayAdapter<String> adapter =
-                   new ArrayAdapter<>(
+         adapter = new ArrayAdapter<>(
                         mContext,
                         R.layout.spinner_item_new,
                         itemList);
@@ -115,7 +129,9 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
 
     }
 
-
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.mOnItemClickListener=onItemClickListener;
+    }
     public void setHint(CharSequence value){
         textInputSpinner.setHint(value);
 
@@ -184,7 +200,7 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
         textInputSpinner.setStartIconDrawable(drawable);
     }
     public void setSelection(int position){
-        autoCompleteTextView.setSelection(position);
+        autoCompleteTextView.setText(adapter.getItem(position));
     }
 
     public void setImeOption(int imeOption){

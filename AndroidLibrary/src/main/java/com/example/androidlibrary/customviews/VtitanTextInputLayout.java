@@ -152,7 +152,7 @@ public class VtitanTextInputLayout extends LinearLayout {
               });
 
 
-        textInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+       textInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View view, boolean b) {
                     if(mOnFocusChangeListener!=null) {
@@ -193,25 +193,23 @@ public class VtitanTextInputLayout extends LinearLayout {
 
     public void setText(CharSequence value) {
         textInputEditText.setText(value);
-        redrawLayout();
     }
 
     public void setFilter(int length){
         textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(length)});
     }
-
+    public void clearText(){
+        textInputEditText.getText().clear();
+    }
 
     public void setHint(CharSequence value){
         textInput.setHint(value);
-        redrawLayout();
     }
     public void setText(int resId) {
         textInputEditText.setText(resId);
-        redrawLayout();
     }
     public void setHint(int resId){
         textInput.setHint(resId);
-        redrawLayout();
     }
     public void setInputType(int inputType){
         textInputEditText.setInputType(inputType);
@@ -275,20 +273,8 @@ public class VtitanTextInputLayout extends LinearLayout {
     public void setImeOption(int imeOption){
         textInputEditText.setImeOptions(imeOption);
     }
-    private void redrawLayout() {
-        view.setDrawingCacheEnabled(true);
-        view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
 
-        view.buildDrawingCache(true);
-        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
-        //setCompoundDrawablesWithIntrinsicBounds(new BitmapDrawable(getResources(), bitmap), null, null, null);
-        view.setDrawingCacheEnabled(false);
-    }
-
-
-
-    @Override
+  /*  @Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
         bundle.putParcelable("instanceState", super.onSaveInstanceState());
@@ -308,7 +294,7 @@ public class VtitanTextInputLayout extends LinearLayout {
             return;
         }
         super.onRestoreInstanceState(state);
-    }
+    }*/
 
 }
 

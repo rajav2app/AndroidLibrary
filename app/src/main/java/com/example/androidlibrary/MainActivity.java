@@ -7,11 +7,13 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidlibrary.app.MyApplication;
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity  {
 
         VtitanTextInputLayout txtUserName=findViewById(R.id.txtUserName);
         txtUserName.setHint("User Name");
-        txtUserName.setFilter(10);
+        //txtUserName.setFilter(10);
 
         //txtUserName.setEndIcon(getDrawable(R.drawable.ic_search));
         //txtUserName.setMaxLength(10);
@@ -59,6 +61,13 @@ public class MainActivity extends AppCompatActivity  {
         VtitanTextInputLayoutSpinner spinner=findViewById(R.id.spinner);
         spinner.setSpinnerAdapter(datasets);
         spinner.setHint("Select Name");
+
+        spinner.setOnItemClickListener(new VtitanTextInputLayoutSpinner.OnItemClickListener() {
+            @Override
+            public void onItemClicked(AdapterView<?> adapterView, View view, int i, long l) {
+               // Log.i("Clicked_Item",""+adapterView.getItemAtPosition(i));
+            }
+        });
 
         TextInputEditText textInputEditText=findViewById(R.id.edtext);
 
@@ -89,11 +98,11 @@ public class MainActivity extends AppCompatActivity  {
                    txtUserName.setText(s.toString());
                 }
                 //txtUserName.setText(s.toString());}
-                Log.i("TextListener_test",s.toString().trim());
+               // Log.i("TextListener_test",s.toString().trim());
             }
         });
         //autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
-        autoCompleteTextView.setImeOption(EditorInfo.IME_ACTION_DONE);
+        autoCompleteTextView.setImeOption(EditorInfo.IME_ACTION_SEARCH);
        /* autoCompleteTextView.setOnItemClickListener(new VtitanAutoCompleteTextView.OnItemClickListener() {
             @Override
             public void onItemClicked(AdapterView<?> adapterView, View view, int i, long l) {
@@ -101,13 +110,25 @@ public class MainActivity extends AppCompatActivity  {
             }
         });*/
 
-      autoCompleteTextView.setOnFocusChangeListener(new VtitanAutoCompleteTextView.OnFocusChangeListener() {
+     /* autoCompleteTextView.setOnFocusChangeListener(new VtitanAutoCompleteTextView.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){
                     //txtUserName.setText("Raja");
                 }
               //  Log.i("FOCUS","CHANGED");
+            }
+        });*/
+
+        autoCompleteTextView.setOnEditorActionListener(new VtitanAutoCompleteTextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    if (textView.getText().toString().trim().length() > 0) {
+                        Log.i("EDITER_ACTION_LISTENER", textView.getText().toString().trim());
+                    }
+                }
+                return false;
             }
         });
 

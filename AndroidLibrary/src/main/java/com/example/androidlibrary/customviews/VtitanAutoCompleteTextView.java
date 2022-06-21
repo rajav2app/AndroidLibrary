@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.text.method.DigitsKeyListener;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -67,11 +68,16 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
      public interface OnFocusChangeListener{
         void onFocusChange(View v, boolean hasFocus);
      }
+     public interface OnEditorActionListener{
+        boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent);
+     }
+
     private OnStartIconClickListener mOnStartIconClickListener;
     private OnEndIconClickListener mOnEndIconClickListener;
     private OnItemClickListener mOnItemClickListener;
     private OnTextChangeListener mOnTextChangeListener;
     private OnFocusChangeListener mOnFocusChangeListener;
+    private OnEditorActionListener mOnEditorActionListener;
     public VtitanAutoCompleteTextView(Context context) {
         super(context);
     }
@@ -101,8 +107,6 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
                 Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.vautocompletetextview, this,true);
         findViewsById(view);
-        //  setupRecyclerView();
-        //textInputSearch.setEndIconMode(END_ICON_CLEAR_TEXT);
         setTextColour(textColour);
         setBackgroundColour(backgroundColour);
         setHint(hint);
@@ -110,7 +114,7 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         setHintTextColour(hintTextColor);
         setHelperText(helperText);
         setBackground(background);
-       // setMaxLength(maxLength);
+        setMaxLength(maxLength);
         setEndIconMode(endiconMode);
         setEndIcon(endIconDrawable);
         setStartIcon(startIconDrawable);
@@ -180,6 +184,16 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
                  }
              });
 
+        autoCompleteTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+               if(mOnEditorActionListener!=null){
+                   mOnEditorActionListener.onEditorAction(textView,i,keyEvent);
+               }
+                return false;
+            }
+        });
+
 
     }
 
@@ -195,13 +209,27 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         this.mOnFocusChangeListener=focusChangeListener;
     }
 
+    public void setOnEditorActionListener(OnEditorActionListener onEditorActionListener){
+        this.mOnEditorActionListener=onEditorActionListener;
+    }
+
+    public void setOnEndIconClickListener(OnEndIconClickListener onEndIconClickListener){
+        this.mOnEndIconClickListener = onEndIconClickListener;
+    }
+    public void setOnStartIconClickListener(OnStartIconClickListener onStartIconClickListener){
+        this.mOnStartIconClickListener=onStartIconClickListener;
+    }
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.mOnItemClickListener=onItemClickListener;
+    }
+
+
     private void findViewsById(View view) {
         textInputSearch = (TextInputLayout) view.findViewById(R.id.textInputAutoCompleteTextView);
         autoCompleteTextView=(AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
     }
 
     public void setAdapter(List<String> itemList){
-        //Log.i("LISTITEMS",itemList.toString());
          adapter =
                 new ArrayAdapter<>(
                         mContext,
@@ -228,16 +256,6 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         }
     }
 
-    public void setOnEndIconClickListener(OnEndIconClickListener onEndIconClickListener){
-        this.mOnEndIconClickListener = onEndIconClickListener;
-    }
-    public void setOnStartIconClickListener(OnStartIconClickListener onStartIconClickListener){
-        this.mOnStartIconClickListener=onStartIconClickListener;
-    }
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
-       this.mOnItemClickListener=onItemClickListener;
-    }
-
     public CharSequence getText() {
         return autoCompleteTextView.getText();
     }
@@ -246,9 +264,11 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         autoCompleteTextView.setText(value);
 
     }
-
     public void setError(String resourse){
         autoCompleteTextView.setError(resourse);
+    }
+    public void clearText(){
+        autoCompleteTextView.getText().clear();
     }
 
     public void setSelection(int position){
@@ -288,11 +308,11 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
     public void setHelperText(CharSequence helperText){
         textInputSearch.setHelperText(helperText);
     }
-   /* public void setMaxLength(int length){
+   public void setMaxLength(int length){
         InputFilter[] FilterArray = new InputFilter[1];
         FilterArray[0] = new InputFilter.LengthFilter(length);
         autoCompleteTextView.setFilters(FilterArray);
-    }*/
+    }
     public void setEndIconMode(int endIconMode){
         textInputSearch.setEndIconMode(endIconMode);
     }
@@ -320,7 +340,7 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         autoCompleteTextView.setKeyListener(DigitsKeyListener.getInstance(digits));
     }
 
-    @Override
+    /*@Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
         bundle.putParcelable("instanceState", super.onSaveInstanceState());
@@ -340,5 +360,5 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
             return;
         }
         super.onRestoreInstanceState(state);
-    }
+    }*/
 }

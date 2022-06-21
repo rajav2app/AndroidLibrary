@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity  {
         VtitanTextInputLayoutSpinner spinner=findViewById(R.id.spinner);
         spinner.setSpinnerAdapter(datasets);
         spinner.setHint("Select Name");
-
+        spinner.setSelection(0);
         spinner.setOnItemClickListener(new VtitanTextInputLayoutSpinner.OnItemClickListener() {
             @Override
             public void onItemClicked(AdapterView<?> adapterView, View view, int i, long l) {

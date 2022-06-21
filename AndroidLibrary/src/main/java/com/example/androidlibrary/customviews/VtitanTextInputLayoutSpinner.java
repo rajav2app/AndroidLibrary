@@ -200,7 +200,7 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
         textInputSpinner.setStartIconDrawable(drawable);
     }
     public void setSelection(int position){
-        autoCompleteTextView.setText(adapter.getItem(position));
+        autoCompleteTextView.setText(adapter.getItem(position),false);
     }
 
     public void setImeOption(int imeOption){

@@ -12,7 +12,7 @@
             android:orientation="horizontal"
             app:boxStrokeColor="@color/text_input_bg"
             app:hintTextColor="@color/textViewColor"
-            android:padding="5dp"
+            android:padding="3dp"
             app:boxCornerRadiusBottomEnd="5dp"
             app:boxCornerRadiusBottomStart="5dp"
             app:boxCornerRadiusTopEnd="5dp"

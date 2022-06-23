@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.androidlibrary.app.MyApplication;
 import com.example.androidlibrary.customviews.DebouncedOnClickListener;
 import com.example.androidlibrary.customviews.VtitanAutoCompleteTextView;
+import com.example.androidlibrary.customviews.VtitanMultipleAutoCompleteTextView;
 import com.example.androidlibrary.customviews.VtitanRadioButton;
 import com.example.androidlibrary.customviews.VtitanSearchView;
 import com.example.androidlibrary.customviews.VtitanTextInputLayout;
@@ -55,8 +56,8 @@ public class MainActivity extends AppCompatActivity  {
         VtitanTextInputLayoutPassword txtinputPassword=findViewById(R.id.password);
         txtinputPassword.setHint("Wifi-Password");
 
-        //txtinputPassword.setEnable(true);
-       // txtinputPassword.setEnable(false);
+        VtitanMultipleAutoCompleteTextView multiAutoCompleteTextView=findViewById(R.id.vtitanmultiAutoCompleteTextView);
+        multiAutoCompleteTextView.setAdapter(datasets);
 
         VtitanTextInputLayoutSpinner spinner=findViewById(R.id.spinner);
         spinner.setSpinnerAdapter(datasets);
@@ -68,8 +69,6 @@ public class MainActivity extends AppCompatActivity  {
                // Log.i("Clicked_Item",""+adapterView.getItemAtPosition(i));
             }
         });
-
-        TextInputEditText textInputEditText=findViewById(R.id.edtext);
 
         VtitanSearchView search=findViewById(R.id.llSearch);
         search.setAdapter(datasets);

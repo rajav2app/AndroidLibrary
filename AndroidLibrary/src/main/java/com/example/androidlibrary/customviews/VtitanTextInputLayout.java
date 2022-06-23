@@ -63,10 +63,14 @@ public class VtitanTextInputLayout extends LinearLayout {
     public interface TOnFocusChangeListener{
         void onFocusChange(View v, boolean hasFocus);
     }
+    public interface TOnClickListener{
+        void onClicked(View v);
+    }
     private OnStartIconClickListener mOnStartIconClickListener;
     private OnEndIconClickListener mOnEndIconClickListener;
     private OnTextChangeListener mOnTextChangeListener;
     private TOnFocusChangeListener mOnFocusChangeListener;
+    private TOnClickListener mOnClickListener;
     public VtitanTextInputLayout(Context context) {
         super(context);
     }
@@ -162,6 +166,15 @@ public class VtitanTextInputLayout extends LinearLayout {
                 }
             });
 
+       textInputEditText.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               if(mOnClickListener!=null){
+                   mOnClickListener.onClicked(view);
+               }
+           }
+       });
+
 
 
     }
@@ -182,6 +195,9 @@ public class VtitanTextInputLayout extends LinearLayout {
 
   public  void setOnFocusChangeListener(TOnFocusChangeListener focusChangeListener){
         mOnFocusChangeListener=focusChangeListener;
+    }
+    public void setOnclickListener( TOnClickListener onclickListener){
+        mOnClickListener=onclickListener;
     }
     private void findViewsById(View view) {
         textInput = (TextInputLayout) view.findViewById(R.id.textInput);

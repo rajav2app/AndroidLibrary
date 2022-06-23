@@ -72,50 +72,18 @@
 
     </com.example.androidlibrary.customviews.VtitanTextInputLayoutPassword>
 
+    <com.example.androidlibrary.customviews.VtitanMultipleAutoCompleteTextView
+        android:id="@+id/vtitanmultiAutoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.example.androidlibrary.customviews.VtitanMultipleAutoCompleteTextView>
  <com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </com.example.androidlibrary.customviews.VtitanTextInputLayoutSpinner>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInput"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:boxStrokeColor="@color/text_input_bg"
-        android:padding="3dp"
-        app:hintTextColor="@color/half_black"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="5dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edtext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint=""
-        android:inputType="text"
-        android:textSize="15sp"
-        android:padding="8dp"
-        android:textColor="@color/textViewColor"/>
-    </com.google.android.material.textfield.TextInputLayout>
-     <!-- <com.example.androidlibrary.customviews.VtitanRadioButton
-          android:id="@+id/rb1"
-          android:layout_width="50dp"
-          android:layout_height="50dp">
-
-      </com.example.androidlibrary.customviews.VtitanRadioButton>
-      <com.example.androidlibrary.customviews.VtitanRadioButton
-          android:id="@+id/rb2"
-          android:layout_width="50dp"
-          android:layout_height="50dp">
-      </com.example.androidlibrary.customviews.VtitanRadioButton>
--->
 <com.example.androidlibrary.customviews.VtitanAutoCompleteTextView
    android:id="@+id/autoCompleteTextview"
     android:layout_width="match_parent"

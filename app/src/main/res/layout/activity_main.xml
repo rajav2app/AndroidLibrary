@@ -57,13 +57,27 @@
         android:layout_height="wrap_content">
 
     </com.example.androidlibrary.customviews.VtitanSearchView>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
     <com.example.androidlibrary.customviews.VtitanTextInputLayout
         android:id="@+id/txtUserName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        app:textColor="@color/textViewColor">
+        app:textColor="@color/textViewColor"
+        app:hint="Total Time( hrs )">
     </com.example.androidlibrary.customviews.VtitanTextInputLayout>
+    <com.example.androidlibrary.customviews.VtitanTextInputLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        app:textColor="@color/textViewColor"
+        app:hint="Total Time( minutes )">
+    </com.example.androidlibrary.customviews.VtitanTextInputLayout>
+
+</LinearLayout>
 
     <com.example.androidlibrary.customviews.VtitanTextInputLayoutPassword
         android:id="@+id/password"

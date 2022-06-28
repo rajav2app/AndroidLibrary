@@ -18,6 +18,7 @@
             app:boxCornerRadiusTopStart="5dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Small"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined">
             <AutoCompleteTextView

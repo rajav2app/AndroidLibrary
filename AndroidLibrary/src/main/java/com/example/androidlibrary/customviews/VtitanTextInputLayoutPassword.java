@@ -150,11 +150,7 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
     public void setHelperText(CharSequence helperText){
         textInputPassword.setHelperText(helperText);
     }
-    public void setMaxLength(int length){
-        InputFilter[] FilterArray = new InputFilter[1];
-        FilterArray[0] = new InputFilter.LengthFilter(length);
-        etPassword.setFilters(FilterArray);
-    }
+
     public void setEndIconMode(int endIconMode){
         textInputPassword.setEndIconMode(endIconMode);
     }
@@ -206,8 +202,33 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
     public void setMaxHeight(int height){
         etPassword.setMaxHeight(height);
     }
-    public void setAllcaps(boolean status){
-        etPassword.setAllCaps(status);
+
+
+    public void setMaxLength(int length){
+        InputFilter[] editFilters =etPassword.getFilters();
+        InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
+        System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
+        newFilters[editFilters.length] =new InputFilter.LengthFilter(length);
+        etPassword.setFilters(newFilters);
+    }
+
+    public void setFilter(int length){
+        InputFilter[] editFilters =etPassword.getFilters();
+        InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
+        System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
+        newFilters[editFilters.length] =new InputFilter.LengthFilter(length);
+        etPassword.setFilters(newFilters);
+        setAllcaps();
+        // textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(length)});
+    }
+
+    public void setAllcaps(){
+        InputFilter[] editFilters =etPassword.getFilters();
+        InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
+        System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
+        newFilters[editFilters.length] =new InputFilter.AllCaps();
+        etPassword.setFilters(newFilters);
+        //textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
     }
 }
 

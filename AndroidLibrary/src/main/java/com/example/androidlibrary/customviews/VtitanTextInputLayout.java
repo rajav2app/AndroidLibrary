@@ -222,7 +222,6 @@ public class VtitanTextInputLayout extends LinearLayout {
         newFilters[editFilters.length] =new InputFilter.LengthFilter(length);
         textInputEditText.setFilters(newFilters);
         setAllcaps();
-       // textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(length)});
     }
     public void clearText(){
         textInputEditText.getText().clear();
@@ -276,16 +275,11 @@ public class VtitanTextInputLayout extends LinearLayout {
         textInput.setHelperText(helperText);
     }
     public void setMaxLength(int length){
-
         InputFilter[] editFilters =textInputEditText.getFilters();
         InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
         System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
         newFilters[editFilters.length] =new InputFilter.LengthFilter(length);
         textInputEditText.setFilters(newFilters);
-        setAllcaps();
-        /*InputFilter[] FilterArray = new InputFilter[1];
-        FilterArray[0] = new InputFilter.LengthFilter(length);
-        textInputEditText.setFilters(FilterArray);*/
     }
     public void setEndIconMode(int endIconMode){
         textInput.setEndIconMode(endIconMode);

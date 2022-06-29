@@ -240,7 +240,13 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         adapter.notifyDataSetChanged();
     }
     public void setFilter(int length){
-        autoCompleteTextView.setFilters(new InputFilter[] {new InputFilter.LengthFilter(length),new InputFilter.AllCaps()});
+        InputFilter[] editFilters =autoCompleteTextView.getFilters();
+        InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
+        System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
+        newFilters[editFilters.length] =new InputFilter.LengthFilter(length);
+        autoCompleteTextView.setFilters(newFilters);
+        setAllcaps();
+        // textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(length)});
     }
 
     public void setThreshHold(int threshold){
@@ -308,10 +314,12 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
     public void setHelperText(CharSequence helperText){
         textInputSearch.setHelperText(helperText);
     }
-   public void setMaxLength(int length){
-        InputFilter[] FilterArray = new InputFilter[1];
-        FilterArray[0] = new InputFilter.LengthFilter(length);
-        autoCompleteTextView.setFilters(FilterArray);
+    public void setMaxLength(int length){
+        InputFilter[] editFilters =autoCompleteTextView.getFilters();
+        InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
+        System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
+        newFilters[editFilters.length] =new InputFilter.LengthFilter(length);
+        autoCompleteTextView.setFilters(newFilters);
     }
     public void setEndIconMode(int endIconMode){
         textInputSearch.setEndIconMode(endIconMode);
@@ -352,9 +360,17 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
     public void setMaxHeight(int height){
         autoCompleteTextView.setMaxHeight(height);
     }
-    public void setAllcaps(boolean status){
-        autoCompleteTextView.setAllCaps(status);
+    public void setAllcaps(){
+
+        InputFilter[] editFilters =autoCompleteTextView.getFilters();
+        InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
+        System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
+        newFilters[editFilters.length] =new InputFilter.AllCaps();
+        autoCompleteTextView.setFilters(newFilters);
+        //textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
     }
+
+
     /*@Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();

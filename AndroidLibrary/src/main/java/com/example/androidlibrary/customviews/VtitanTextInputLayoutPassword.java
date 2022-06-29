@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.text.InputFilter;
+import android.text.method.DigitsKeyListener;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -183,6 +184,30 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
         Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
         //setCompoundDrawablesWithIntrinsicBounds(new BitmapDrawable(getResources(), bitmap), null, null, null);
         view.setDrawingCacheEnabled(false);
+    }
+
+    public void setDigits(String digit,int inputType){
+        etPassword.setKeyListener(DigitsKeyListener.getInstance(digit));
+        etPassword.setRawInputType(inputType);
+    }
+    public void setsingleLine(boolean enable){
+        etPassword.setSingleLine(enable);
+    }
+    public void setImeOption(int imeOption){
+        etPassword.setImeOptions(imeOption);
+    }
+
+    public void setMaxLines(int line){
+        etPassword.setMaxLines(line);
+    }
+    public void setMaxWidth(int width){
+        etPassword.setMaxWidth(width);
+    }
+    public void setMaxHeight(int height){
+        etPassword.setMaxHeight(height);
+    }
+    public void setAllcaps(boolean status){
+        etPassword.setAllCaps(status);
     }
 }
 

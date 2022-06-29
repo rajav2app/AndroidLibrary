@@ -14,7 +14,10 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
+import android.text.method.TextKeyListener;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +31,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StyleableRes;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.util.Util;
 import com.example.androidlibrary.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -212,7 +216,13 @@ public class VtitanTextInputLayout extends LinearLayout {
     }
 
     public void setFilter(int length){
-        textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(length)});
+        InputFilter[] editFilters =textInputEditText.getFilters();
+        InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
+        System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
+        newFilters[editFilters.length] =new InputFilter.LengthFilter(length);
+        textInputEditText.setFilters(newFilters);
+        setAllcaps();
+       // textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(length)});
     }
     public void clearText(){
         textInputEditText.getText().clear();
@@ -266,9 +276,16 @@ public class VtitanTextInputLayout extends LinearLayout {
         textInput.setHelperText(helperText);
     }
     public void setMaxLength(int length){
-        InputFilter[] FilterArray = new InputFilter[1];
+
+        InputFilter[] editFilters =textInputEditText.getFilters();
+        InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
+        System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
+        newFilters[editFilters.length] =new InputFilter.LengthFilter(length);
+        textInputEditText.setFilters(newFilters);
+        setAllcaps();
+        /*InputFilter[] FilterArray = new InputFilter[1];
         FilterArray[0] = new InputFilter.LengthFilter(length);
-        textInputEditText.setFilters(FilterArray);
+        textInputEditText.setFilters(FilterArray);*/
     }
     public void setEndIconMode(int endIconMode){
         textInput.setEndIconMode(endIconMode);
@@ -288,6 +305,36 @@ public class VtitanTextInputLayout extends LinearLayout {
 
     public void setImeOption(int imeOption){
         textInputEditText.setImeOptions(imeOption);
+    }
+
+    public void setDigits(String digits){
+        textInputEditText.setKeyListener(DigitsKeyListener.getInstance(digits));
+        textInputEditText.setRawInputType(InputType.TYPE_CLASS_TEXT);
+    }
+    public void setDigits(String digit,int inputType){
+        textInputEditText.setKeyListener(DigitsKeyListener.getInstance(digit));
+        textInputEditText.setRawInputType(inputType);
+    }
+    public void setsingleLine(boolean enable){
+        textInputEditText.setSingleLine(enable);
+    }
+    public void setMaxLines(int line){
+        textInputEditText.setMaxLines(line);
+    }
+    public void setMaxWidth(int width){
+        textInputEditText.setMaxWidth(width);
+    }
+    public void setMaxHeight(int height){
+        textInputEditText.setMaxHeight(height);
+    }
+    public void setAllcaps(){
+
+        InputFilter[] editFilters =textInputEditText.getFilters();
+        InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
+        System.arraycopy(editFilters, 0, newFilters, 0, editFilters.length);
+        newFilters[editFilters.length] =new InputFilter.AllCaps();
+        textInputEditText.setFilters(newFilters);
+        //textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
     }
 
   /*  @Override

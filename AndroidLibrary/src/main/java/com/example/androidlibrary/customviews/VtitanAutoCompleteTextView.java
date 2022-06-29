@@ -336,10 +336,25 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         autoCompleteTextView.setInputType(inputType);
     }
 
-    public void setDigits(String digits){
-        autoCompleteTextView.setKeyListener(DigitsKeyListener.getInstance(digits));
+    public void setDigits(String digit,int inputType){
+        autoCompleteTextView.setKeyListener(DigitsKeyListener.getInstance(digit));
+        autoCompleteTextView.setRawInputType(inputType);
     }
-
+    public void setsingleLine(boolean enable){
+        autoCompleteTextView.setSingleLine(enable);
+    }
+    public void setMaxLines(int line){
+        autoCompleteTextView.setMaxLines(line);
+    }
+    public void setMaxWidth(int width){
+        autoCompleteTextView.setMaxWidth(width);
+    }
+    public void setMaxHeight(int height){
+        autoCompleteTextView.setMaxHeight(height);
+    }
+    public void setAllcaps(boolean status){
+        autoCompleteTextView.setAllCaps(status);
+    }
     /*@Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();

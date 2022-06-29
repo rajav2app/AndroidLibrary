@@ -49,6 +49,16 @@ public class MainActivity extends AppCompatActivity  {
 
         VtitanTextInputLayout txtUserName=findViewById(R.id.txtUserName);
         txtUserName.setHint("User Name");
+        txtUserName.setMaxLines(1);
+        txtUserName.setFilter(6);
+        //txtUserName.setAllcaps();
+       // txtUserName.setMaxLength(5);
+       // txtUserName.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        //txtUserName.setDigits("1234567890.",EditorInfo.TYPE_CLASS_TEXT);
+
+        //txtUserName.setMaxLength(10);
+        //txtUserName.setDigits("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+        //txtUserName.setImeOption(EditorInfo.IME_ACTION_DONE);
         //txtUserName.setFilter(10);
 
         //txtUserName.setEndIcon(getDrawable(R.drawable.ic_search));
@@ -78,8 +88,9 @@ public class MainActivity extends AppCompatActivity  {
         VtitanAutoCompleteTextView autoCompleteTextView=findViewById(R.id.autoCompleteTextview);
         autoCompleteTextView.setAdapter(datasets);
         autoCompleteTextView.setHint(getString(R.string.device_name));
-        autoCompleteTextView.setDigits("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
-        autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        autoCompleteTextView.setDigits("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",EditorInfo.TYPE_CLASS_TEXT);
+       // autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        autoCompleteTextView.setMaxLength(10);
         autoCompleteTextView.setOnEditTextChangeListener(new VtitanAutoCompleteTextView.OnTextChangeListener() {
             @Override
             public void vbeforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -94,14 +105,14 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void vafterTextChanged(Editable s) {
                 if(!s.toString().isEmpty()){
-                   txtUserName.setText(s.toString());
+                   //txtUserName.setText(s.toString());
                 }
                 //txtUserName.setText(s.toString());}
                // Log.i("TextListener_test",s.toString().trim());
             }
         });
         //autoCompleteTextView.setInputType(EditorInfo.TYPE_CLASS_TEXT);
-        autoCompleteTextView.setImeOption(EditorInfo.IME_ACTION_SEARCH);
+        autoCompleteTextView.setImeOption(EditorInfo.IME_ACTION_DONE);
        /* autoCompleteTextView.setOnItemClickListener(new VtitanAutoCompleteTextView.OnItemClickListener() {
             @Override
             public void onItemClicked(AdapterView<?> adapterView, View view, int i, long l) {
@@ -131,7 +142,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
-        autoCompleteTextView.setFilter(10);
+       // autoCompleteTextView.setFilter(10);
        // autoCompleteTextView.setMaxLength(10);
         //autoCompleteTextView.setThreshHold(3);
 

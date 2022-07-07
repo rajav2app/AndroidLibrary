@@ -28,7 +28,7 @@
     <color name="tool_bar_text">#FFFFFF</color>
     <color name="dashboard_layout_background">@color/colorPrimary</color>
     <color name="dialog_fragment_title_background">#12163b</color>
-    <color name="spinner_background">@color/colorPrimary</color>
+    <color name="spinner_background">#11163a</color>
 
     <color name="drug_list_selection">#126082</color>
     <color name="drug_list_orange">#E67F10</color>

@@ -30,7 +30,7 @@
     <color name="tool_bar_text">#FFFFFF</color>
     <color name="dashboard_layout_background">#E5E9EC</color>
     <color name="dialog_fragment_title_background">#1B5B87</color>
-    <color name="spinner_background">#E5E9EC</color>
+    <color name="spinner_background">#FFFFFF</color>
 
     <color name="drug_list_selection">#126082</color>
     <color name="drug_list_orange">#E67F10</color>

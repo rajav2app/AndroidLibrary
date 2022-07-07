@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity  {
         spinner.setOnItemClickListener(new VtitanTextInputLayoutSpinner.OnItemClickListener() {
             @Override
             public void onItemClicked(AdapterView<?> adapterView, View view, int i, long l) {
-               // Log.i("Clicked_Item",""+adapterView.getItemAtPosition(i));
+                Log.i("Clicked_Item",""+i+adapterView.getItemAtPosition(i));
             }
         });
 

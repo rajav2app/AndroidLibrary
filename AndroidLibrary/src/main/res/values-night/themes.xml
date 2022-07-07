@@ -6,4 +6,17 @@
         <item name="android:background">@drawable/search_bg</item>
         <item name="boxStrokeWidth">1dp</item>
     </style>
+
+    <style name="ThemeOverlay.AppTheme.TextInputEditText.Outlined" parent="">
+        <item name="colorControlActivated">@color/textViewColor</item>
+    </style>
+
+    <style name="SearchStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/prograss_bar</item>
+        <item name="android:background">@drawable/search_bg</item>
+        <item name="boxStrokeWidth">1dp</item>
+    </style>
+    <style name="hintStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_gravity">center</item>
+    </style>
 </resources>

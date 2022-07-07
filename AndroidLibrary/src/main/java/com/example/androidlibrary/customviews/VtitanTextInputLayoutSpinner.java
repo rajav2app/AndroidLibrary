@@ -85,6 +85,7 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(mOnItemClickListener!=null) {
                     mOnItemClickListener.onItemClicked(adapterView, view, i, l);
+                   // Log.i("TAG",""+i);
                 }
             }
         });
@@ -100,7 +101,7 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
     }
 
     public void setSpinnerAdapter(List<String> itemList){
-        Log.i("SPINNERLIST",itemList.toString());
+       // Log.i("SPINNERLIST",itemList.toString());
          adapter = new ArrayAdapter<>(
                         mContext,
                         R.layout.spinner_item_new,

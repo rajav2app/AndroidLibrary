@@ -223,7 +223,6 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         this.mOnItemClickListener=onItemClickListener;
     }
 
-
     private void findViewsById(View view) {
         textInputSearch = (TextInputLayout) view.findViewById(R.id.textInputAutoCompleteTextView);
         autoCompleteTextView=(AutoCompleteTextView) view.findViewById(R.id.autoCompleteTextView);
@@ -239,6 +238,7 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         autoCompleteTextView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
+
     public void setFilter(int length){
         InputFilter[] editFilters =autoCompleteTextView.getFilters();
         InputFilter[] newFilters = new InputFilter[editFilters.length + 1];
@@ -247,6 +247,10 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         autoCompleteTextView.setFilters(newFilters);
         setAllcaps();
         // textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(length)});
+    }
+    public void setfocusable(boolean enable){
+        autoCompleteTextView.setFocusable(false);
+        autoCompleteTextView.setClickable(true);
     }
 
     public void setThreshHold(int threshold){
@@ -370,26 +374,4 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         //textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
     }
 
-
-    /*@Override
-    protected Parcelable onSaveInstanceState() {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("instanceState", super.onSaveInstanceState());
-        bundle.putString("currentEdit", autoCompleteTextView.getText().toString());
-        bundle.putBoolean("isFocused", autoCompleteTextView.hasFocus());
-        return bundle;
-    }
-    @Override
-    protected void onRestoreInstanceState(Parcelable state) {
-        if (state instanceof Bundle) {
-            Bundle bundle = (Bundle) state;
-            autoCompleteTextView.setText(bundle.getString("currentEdit"));
-            if (bundle.getBoolean("isFocused")) {
-                autoCompleteTextView.requestFocus();
-            }
-            super.onRestoreInstanceState(bundle.getParcelable("instanceState"));
-            return;
-        }
-        super.onRestoreInstanceState(state);
-    }*/
 }

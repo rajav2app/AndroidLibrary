@@ -331,7 +331,10 @@ public class VtitanMultipleAutoCompleteTextView extends LinearLayout {
     public void setImeOption(int imeOption){
         autoCompleteTextView.setImeOptions(imeOption);
     }
-
+    public void setfocusable(boolean enable){
+        autoCompleteTextView.setFocusable(false);
+        autoCompleteTextView.setClickable(true);
+    }
     public void setInputType(int inputType){
         autoCompleteTextView.setInputType(inputType);
     }

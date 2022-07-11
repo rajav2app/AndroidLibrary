@@ -51,6 +51,13 @@ public class MainActivity extends AppCompatActivity  {
         txtUserName.setHint("User Name");
         txtUserName.setMaxLines(1);
         txtUserName.setFilter(6);
+        txtUserName.setfocusable(false);
+        txtUserName.setOnclickListener(new VtitanTextInputLayout.TOnClickListener() {
+            @Override
+            public void onClicked(View v) {
+                Log.i("Clicked","Clicked");
+            }
+        });
         //txtUserName.setAllcaps();
        // txtUserName.setMaxLength(5);
        // txtUserName.setInputType(EditorInfo.TYPE_CLASS_TEXT);

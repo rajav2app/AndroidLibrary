@@ -221,6 +221,10 @@ public class VtitanTextInputLayoutPassword extends LinearLayout {
         setAllcaps();
         // textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps(),new InputFilter.LengthFilter(length)});
     }
+    public void setfocusable(boolean enable){
+        etPassword.setFocusable(false);
+        etPassword.setClickable(true);
+    }
 
     public void setAllcaps(){
         InputFilter[] editFilters =etPassword.getFilters();

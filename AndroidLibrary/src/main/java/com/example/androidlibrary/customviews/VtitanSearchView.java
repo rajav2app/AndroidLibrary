@@ -149,6 +149,10 @@ public class VtitanSearchView extends LinearLayout  {
         }
     }
 
+    public void setfocusable(boolean enable){
+        autoCompleteTextView.setFocusable(false);
+        autoCompleteTextView.setClickable(true);
+    }
     public void setOnEndIconClickListener(VtitanTextInputLayout.OnEndIconClickListener onEndIconClickListener){
         mOnEndIconClickListener = onEndIconClickListener;
     }

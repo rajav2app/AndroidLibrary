@@ -248,6 +248,10 @@ public class VtitanTextInputLayout extends LinearLayout {
             textInput.setBoxBackgroundColor(mContext.getColor(R.color.black));
         }
     }
+    public void setfocusable(boolean enable){
+        textInputEditText.setFocusable(false);
+        textInputEditText.setClickable(true);
+    }
     public void setError(String resourse){
         textInputEditText.setError(resourse);
     }
@@ -330,28 +334,6 @@ public class VtitanTextInputLayout extends LinearLayout {
         textInputEditText.setFilters(newFilters);
         //textInputEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
     }
-
-  /*  @Override
-    protected Parcelable onSaveInstanceState() {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("instanceState", super.onSaveInstanceState());
-        bundle.putString("currentEdit", textInputEditText.getText().toString());
-        bundle.putBoolean("isFocused", textInputEditText.hasFocus());
-        return bundle;
-    }
-    @Override
-    protected void onRestoreInstanceState(Parcelable state) {
-        if (state instanceof Bundle) {
-            Bundle bundle = (Bundle) state;
-            textInputEditText.setText(bundle.getString("currentEdit"));
-            if (bundle.getBoolean("isFocused")) {
-                textInputEditText.requestFocus();
-            }
-            super.onRestoreInstanceState(bundle.getParcelable("instanceState"));
-            return;
-        }
-        super.onRestoreInstanceState(state);
-    }*/
 
 }
 

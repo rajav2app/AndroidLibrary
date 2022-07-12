@@ -124,7 +124,9 @@ public class VtitanTextInputLayoutSpinner extends LinearLayout {
             textInputSpinner.setBoxBackgroundColor(mContext.getColor(R.color.black));
         }
     }
-
+    public void setError(String resourse){
+        autoCompleteTextView.setError(resourse);
+    }
     public CharSequence getText() {
         return autoCompleteTextView.getText();
     }

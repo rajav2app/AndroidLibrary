@@ -24,6 +24,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Filterable;
+import android.widget.ListAdapter;
 
 import androidx.annotation.Nullable;
 
@@ -238,6 +240,10 @@ public class VtitanAutoCompleteTextView extends LinearLayout {
         autoCompleteTextView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
+      public <T extends ListAdapter & Filterable> void setAdapter(T adapter) {
+        throw new RuntimeException("Stub!");
+    }
+
 
     public void setFilter(int length){
         InputFilter[] editFilters =autoCompleteTextView.getFilters();
